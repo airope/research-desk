@@ -34,7 +34,7 @@ jobs:
       - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6
         with:
           version: '0.11.2'
-          python-version: '3.12.14'
+          python-version: '3.12.13'
       - name: Validate local Compose definitions
         run: |
           docker compose config --quiet
@@ -93,7 +93,7 @@ jobs:
         run: docker compose up --build -d
       - name: Verify HTTP readiness and load offline fixture
         run: |
-          curl --fail --silent --show-error --retry 30 --retry-connrefused --retry-delay 2 http://127.0.0.1:8000/ > /tmp/research-desk-home.html
+          curl --fail --silent --show-error --max-time 5 --retry 30 --retry-all-errors --retry-max-time 90 --retry-delay 2 http://127.0.0.1:8000/ > /tmp/research-desk-home.html
           docker compose exec -T web python manage.py check
           docker compose exec -T web python manage.py demo
       - name: Container diagnostics
