@@ -1,0 +1,7 @@
+{% load presentation %}
+{% with article_url=doi|doi_url %}
+<div class="publication-links">
+{% if provider == 'inspire' %}{% with source_url=external_id|inspire_url %}{% if source_url %}<a href="{{ source_url }}" target="_blank" rel="noopener noreferrer">View on INSPIRE ↗</a>{% endif %}{% endwith %}{% endif %}
+{% if article_url %}<a href="{{ article_url }}" target="_blank" rel="noopener noreferrer">Read at publisher ↗</a>{% elif provider != 'inspire' %}<small>No article link supplied</small>{% endif %}
+</div>
+{% endwith %}

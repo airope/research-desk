@@ -1,0 +1,23 @@
+name: Bug report
+description: Report a reproducible problem with Research Desk.
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include API keys, session cookies, private papers or research data. For security vulnerabilities, use SECURITY.md instead."
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Prefer committed demonstration fixtures or a minimal synthetic example.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and observed behavior
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Revision, OS, Python and PostgreSQL versions

@@ -1,0 +1,1025 @@
+openapi: 3.0.3
+info:
+  title: Scholarly Record Reconciliation API
+  version: 1.0.0
+  description: Local metadata reconciliation. Scores are not probabilities.
+paths:
+  /api/v1/candidates:
+    get:
+      operationId: candidates_list
+      parameters:
+      - in: query
+        name: conflict
+        schema:
+          type: string
+          enum:
+          - 'false'
+          - 'true'
+        description: Whether source DOI values are both present and disagree.
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: source
+        schema:
+          type: string
+          enum:
+          - crossref
+          - openalex
+      - in: query
+        name: state
+        schema:
+          type: string
+          enum:
+          - accepted
+          - deferred
+          - insufficient_evidence
+          - needs_reassessment
+          - pending
+          - rejected
+          - review
+      tags:
+      - candidates
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPairList'
+          description: ''
+  /api/v1/candidates/{id}:
+    get:
+      operationId: candidates_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - candidates
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pair'
+          description: ''
+  /api/v1/candidates/{id}/decisions:
+    post:
+      operationId: candidates_decisions_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - candidates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DecisionInput'
+            examples:
+              HumanDecision:
+                value:
+                  action: accept
+                  reason: Same DOI and compatible edition
+                  expected_revision: 1
+                  idempotency_key: curator-action-001
+                summary: Human decision
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DecisionInput'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DecisionInput'
+        required: true
+      security:
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Decision'
+          description: ''
+  /api/v1/decisions/{id}/withdraw:
+    get:
+      operationId: decisions_withdraw_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - decisions
+      security:
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+    post:
+      operationId: decisions_withdraw_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - decisions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WithdrawInput'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WithdrawInput'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WithdrawInput'
+        required: true
+      security:
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Decision'
+          description: ''
+  /api/v1/imports:
+    post:
+      operationId: imports_create
+      tags:
+      - imports
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportInput'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ImportInput'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ImportInput'
+        required: true
+      security:
+      - cookieAuth: []
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportRun'
+          description: ''
+  /api/v1/imports/{id}:
+    get:
+      operationId: imports_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - imports
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportRun'
+          description: ''
+  /api/v1/imports/{id}/retry:
+    post:
+      operationId: imports_retry_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - imports
+      security:
+      - cookieAuth: []
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportRun'
+          description: ''
+  /api/v1/publications:
+    get:
+      operationId: publications_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: q
+        schema:
+          type: string
+        description: Title or DOI search; at most 200 characters.
+      tags:
+      - publications
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPublicationList'
+          description: ''
+  /api/v1/publications/{id}:
+    get:
+      operationId: publications_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - publications
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Publication'
+          description: ''
+  /api/v1/publications/{id}/history:
+    get:
+      operationId: publications_history_list
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - publications
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDecisionList'
+          description: ''
+  /api/v1/records/{id}:
+    get:
+      operationId: records_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - records
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Record'
+          description: ''
+  /api/v1/records/{id}/versions:
+    get:
+      operationId: records_versions_list
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - records
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedVersionList'
+          description: ''
+  /api/v1/schema/:
+    get:
+      operationId: schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - ckb
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - ug
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - schema
+      security:
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+components:
+  schemas:
+    ActionEnum:
+      enum:
+      - accept
+      - reject
+      - defer
+      type: string
+      description: |-
+        * `accept` - accept
+        * `reject` - reject
+        * `defer` - defer
+    Decision:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        action:
+          type: string
+          maxLength: 16
+        actor:
+          type: string
+          maxLength: 150
+        reason:
+          type: string
+        expected_revision:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        idempotency_key:
+          type: string
+          maxLength: 128
+        request_hash:
+          type: string
+          maxLength: 64
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        pair:
+          type: string
+          format: uuid
+        proposal:
+          type: string
+          format: uuid
+        withdrawal_of:
+          type: string
+          format: uuid
+          nullable: true
+      required:
+      - action
+      - actor
+      - created_at
+      - expected_revision
+      - id
+      - idempotency_key
+      - pair
+      - proposal
+      - request_hash
+    DecisionInput:
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/ActionEnum'
+        reason:
+          type: string
+          default: ''
+          maxLength: 2000
+        expected_revision:
+          type: integer
+          minimum: 1
+        idempotency_key:
+          type: string
+          maxLength: 128
+      required:
+      - action
+      - expected_revision
+      - idempotency_key
+    ImportFailure:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        external_id:
+          type: string
+          maxLength: 512
+        code:
+          type: string
+          maxLength: 64
+        message:
+          type: string
+        attempts:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        retryable:
+          type: boolean
+        resolved:
+          type: boolean
+      required:
+      - code
+      - id
+      - message
+    ImportInput:
+      type: object
+      properties:
+        provider:
+          $ref: '#/components/schemas/ProviderEnum'
+        profile:
+          $ref: '#/components/schemas/ProfileEnum'
+        idempotency_key:
+          type: string
+          maxLength: 128
+      required:
+      - idempotency_key
+      - profile
+      - provider
+    ImportRun:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        provider:
+          type: string
+          maxLength: 32
+        profile: {}
+        status:
+          type: string
+          maxLength: 24
+        counters: {}
+        cursor: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        error:
+          type: string
+        lease_expires_at:
+          type: string
+          format: date-time
+          nullable: true
+        started_at:
+          type: string
+          format: date-time
+          nullable: true
+        finished_at:
+          type: string
+          format: date-time
+          nullable: true
+        failures:
+          type: array
+          items:
+            $ref: '#/components/schemas/ImportFailure'
+          readOnly: true
+      required:
+      - created_at
+      - failures
+      - id
+      - provider
+      - updated_at
+    PaginatedDecisionList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Decision'
+    PaginatedPairList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pair'
+    PaginatedPublicationList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Publication'
+    PaginatedVersionList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Version'
+    Pair:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        left:
+          allOf:
+          - $ref: '#/components/schemas/Record'
+          readOnly: true
+        right:
+          allOf:
+          - $ref: '#/components/schemas/Record'
+          readOnly: true
+        proposal:
+          allOf:
+          - $ref: '#/components/schemas/Proposal'
+          nullable: true
+          readOnly: true
+        decisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Decision'
+          readOnly: true
+        revision:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        state:
+          type: string
+          maxLength: 32
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - decisions
+      - id
+      - left
+      - proposal
+      - right
+      - updated_at
+    ProfileEnum:
+      enum:
+      - demo
+      type: string
+      description: '* `demo` - demo'
+    Proposal:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        left_version:
+          allOf:
+          - $ref: '#/components/schemas/Version'
+          readOnly: true
+        right_version:
+          allOf:
+          - $ref: '#/components/schemas/Version'
+          readOnly: true
+        method:
+          type: string
+          maxLength: 64
+        config: {}
+        signals: {}
+        warnings: {}
+        ranking_score:
+          type: number
+          format: double
+          nullable: true
+        recommendation:
+          type: string
+          maxLength: 32
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        pair:
+          type: string
+          format: uuid
+      required:
+      - created_at
+      - id
+      - left_version
+      - pair
+      - recommendation
+      - right_version
+    ProviderEnum:
+      enum:
+      - crossref
+      - openalex
+      type: string
+      description: |-
+        * `crossref` - crossref
+        * `openalex` - openalex
+    Publication:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/Record'
+          readOnly: true
+        revision:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        state:
+          type: string
+          maxLength: 20
+        successors: {}
+        projection: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - id
+      - records
+      - updated_at
+    Record:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        current_version:
+          allOf:
+          - $ref: '#/components/schemas/Version'
+          readOnly: true
+        provider:
+          type: string
+          maxLength: 32
+        external_id:
+          type: string
+          maxLength: 512
+        doi:
+          type: string
+        title_key:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        publication:
+          type: string
+          format: uuid
+      required:
+      - created_at
+      - current_version
+      - external_id
+      - id
+      - provider
+      - publication
+      - updated_at
+    Version:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        raw: {}
+        normalized: {}
+        content_hash:
+          type: string
+          maxLength: 64
+        normalization_version:
+          type: string
+          maxLength: 32
+        fetched_at:
+          type: string
+          format: date-time
+          readOnly: true
+        record:
+          type: string
+          format: uuid
+      required:
+      - content_hash
+      - fetched_at
+      - id
+      - normalized
+      - raw
+      - record
+    WithdrawInput:
+      type: object
+      properties:
+        reason:
+          type: string
+          maxLength: 2000
+        expected_revision:
+          type: integer
+          minimum: 1
+        idempotency_key:
+          type: string
+          maxLength: 128
+      required:
+      - expected_revision
+      - idempotency_key
+      - reason
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

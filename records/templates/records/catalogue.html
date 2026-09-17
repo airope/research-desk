@@ -1,0 +1,22 @@
+{% extends 'records/base.html' %}
+{% load presentation %}
+{% block title %}Catalogue{% endblock %}
+{% block content %}
+<div class="page-header"><h1>Catalogue <span class="count">{{ page.paginator.count }}</span></h1></div>
+<section class="panel">
+  <form class="filters" method="get">
+    <label class="search">Title or DOI<input name="q" value="{{ query }}" maxlength="200" placeholder="Search publications"></label>
+    <button>Search</button>{% if query %}<a href="{% url 'catalogue' %}">Clear</a>{% endif %}
+  </form>
+  <div class="table-wrap"><table class="catalogue-table">
+    <thead><tr><th>Publication</th><th>Year</th><th>Sources</th><th><span class="sr-only">Action</span></th></tr></thead>
+    <tbody>{% for publication in page %}
+      <tr><td class="titles"><a class="record-title" href="{% url 'publication' publication.id %}">{{ publication.projection.title.value|plain_title }}</a><small class="identifier">{{ publication.projection.doi.value|default:'No DOI' }}</small></td>
+      <td>{{ publication.projection.year.value|default:'—' }}</td>
+      <td>{{ publication.records.count }}<small>{% for record in publication.records.all %}{{ record.provider|readable }}{% if not forloop.last %}, {% endif %}{% endfor %}</small></td>
+      <td class="row-action"><a href="{% url 'publication' publication.id %}">Provenance →</a></td></tr>
+    {% empty %}<tr><td colspan="4" class="empty">No publications found.</td></tr>{% endfor %}</tbody>
+  </table></div>
+  {% include 'records/pagination.html' %}
+</section>
+{% endblock %}

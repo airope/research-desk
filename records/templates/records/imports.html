@@ -1,0 +1,36 @@
+{% extends 'records/base.html' %}
+{% load presentation %}
+{% block title %}Imports{% endblock %}
+{% block content %}
+<div class="page-header"><h1>Imports <span class="count">{{ page.paginator.count }}</span></h1></div>
+{% if can_operate %}
+<section class="panel">
+  <form method="post" class="filters">{% csrf_token %}<input type="hidden" name="idempotency_key" value="{{ key }}">
+    <label>Demo source<select name="provider"><option value="crossref">Crossref</option><option value="openalex">OpenAlex</option></select></label>
+    <button>Queue import</button><span class="muted">Local fixtures · No API key</span>
+  </form>
+</section>
+{% else %}<p class="access-note"><a href="{% url 'login' %}?next={{ request.path|urlencode }}">Sign in as an operator</a> to import or retry.</p>{% endif %}
+<section class="panel">
+  <div class="table-wrap"><table>
+    <thead><tr><th>Source / started</th><th>Status</th><th>Read</th><th>Created</th><th>Updated</th><th>Failed</th><th><span class="sr-only">Details</span></th><th><span class="sr-only">Action</span></th></tr></thead>
+    <tbody>{% for run in page %}<tr>
+      <td><strong>{{ run.provider|readable }}</strong><small>{{ run.created_at|date:'d M Y, H:i' }}</small></td>
+      <td><span class="state {{ run.status }}">{{ run.status|readable }}</span></td>
+      <td class="numeric">{{ run.counters.read|default:0 }}</td>
+      <td class="numeric">{{ run.counters.created|default:0 }}</td>
+      <td class="numeric">{{ run.counters.updated|default:0 }}</td>
+      <td class="numeric {% if run.counters.rejected %}warning{% endif %}">{{ run.counters.rejected|default:0 }}</td>
+      <td><details class="inline-details"><summary>Details</summary>
+        <dl><dt>Run</dt><dd class="identifier">{{ run.id }}</dd><dt>Unchanged</dt><dd>{{ run.counters.unchanged|default:0 }}</dd><dt>Lease expires</dt><dd>{{ run.lease_expires_at|date:'d M Y, H:i:s'|default:'—' }}</dd><dt>Last update</dt><dd>{{ run.updated_at|date:'d M Y, H:i:s' }}</dd></dl>
+        {% if run.error %}<p class="warning">{{ run.error }}</p>{% endif %}
+        {% for item in run.failures.all %}<div class="failure"><strong>{{ item.code|readable }}</strong><p>{{ item.message }}</p><code>{{ item.external_id }}</code></div>{% endfor %}
+        <details><summary>Checkpoint</summary><pre>{{ run.cursor|json_text }}</pre></details>
+        <details><summary>Import profile</summary><pre>{{ run.profile|json_text }}</pre></details>
+      </details></td>
+      <td>{% if can_operate %}{% if run.status == 'failed' or run.status == 'partially_failed' %}<form method="post">{% csrf_token %}<input type="hidden" name="retry" value="{{ run.id }}"><button class="secondary">Retry</button></form>{% endif %}{% endif %}</td>
+    </tr>{% empty %}<tr><td colspan="8" class="empty">No imports.</td></tr>{% endfor %}</tbody>
+  </table></div>
+  {% include 'records/pagination.html' %}
+</section>
+{% endblock %}

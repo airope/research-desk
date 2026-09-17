@@ -1,0 +1,68 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Scholarly Record Reconciliation{% endblock %} · SRR</title>
+  <link rel="stylesheet" href="{% static 'records/app.css' %}?v=2">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <aside class="sidebar" aria-label="Workspace navigation">
+    <a class="brand" href="{% url 'catalogues:home' %}" aria-label="My catalogues">SRR</a>
+    <nav aria-label="Main navigation">
+      <a href="{% url 'research:home' %}">Research dossiers</a>
+      <a href="{% url 'catalogues:home' %}" {% if active == 'workspaces' %}class="active" aria-current="page"{% endif %}>My catalogues</a>
+      {% if catalogue and active == 'workspaces' %}
+      <a href="{% url 'catalogues:detail' catalogue.id %}">Current catalogue</a>
+      <a href="{% url 'catalogues:selection' catalogue.id %}">Search INSPIRE</a>
+      <a href="{% url 'catalogues:detail' catalogue.id %}?status=pending">Check suggestions</a>
+      <a href="{% url 'catalogues:export' catalogue.id %}">Export catalogue</a>
+      {% endif %}
+      <details class="technical-navigation" {% if active != 'workspaces' %}open{% endif %}>
+        <summary>Technical tools</summary>
+        <a href="{% url 'queue' %}">Reference pair review</a>
+        <a href="{% url 'catalogue' %}">Reference dataset</a>
+        <a href="{% url 'imports' %}">Reference imports</a>
+        <a href="{% url 'evaluation' %}">Matching benchmarks</a>
+        <a href="/api/v1/docs/">API documentation</a>
+      </details>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="account">
+        {% if user.is_authenticated %}
+          <span class="account-name">{{ user.username }}</span>
+          <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button class="link" type="submit">Sign out</button>
+          </form>
+        {% else %}
+          <span class="muted">Read-only access</span>
+          <a href="{% url 'login' %}">Sign in</a>
+        {% endif %}
+      </div>
+
+    </div>
+  </aside>
+  <main id="main-content" tabindex="-1">
+    {% for message in messages %}
+      <div role="status" class="notice success">{{ message }}</div>
+    {% endfor %}
+    {% if error %}
+      <div role="alert" class="notice error">{{ error }}</div>
+    {% endif %}
+    {% if active == 'queue' or active == 'catalogue' or active == 'imports' or active == 'evaluation' %}
+    <div class="notice">
+      {% if active == 'queue' %}Reference pair review checks the matching engine's suggestions on the shared reference dataset.
+      {% elif active == 'catalogue' %}This reference dataset is used to inspect the matching engine. It is separate from your catalogues.
+      {% elif active == 'evaluation' %}These benchmarks measure the matching engine on labelled examples, not the quality of your catalogue.
+      {% else %}These imports populate the shared reference dataset.{% endif %}
+      <a href="{% url 'catalogues:home' %}">Go to my catalogues</a>
+    </div>
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

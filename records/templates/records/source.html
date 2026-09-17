@@ -1,0 +1,16 @@
+{% load presentation %}
+<article class="panel source">
+  <div class="panel-header"><h2>{{ record.provider|readable }}</h2><span class="muted">{{ label }}</span></div>
+  <h3 class="source-title">{{ version.normalized.title|plain_title }}</h3>
+  <dl>
+    <dt>DOI</dt><dd class="identifier">{{ version.normalized.doi|default:'Not provided' }}</dd>
+    <dt>Authors</dt><dd>{{ version.normalized.authors|field_value|default:'Not provided' }}</dd>
+    <dt>Type</dt><dd>{{ version.normalized.type|default:'Not provided'|readable }}</dd>
+    <dt>Year</dt><dd>{{ version.normalized.year|default:'Not provided' }}</dd>
+    <dt>Dates</dt><dd class="preserve-lines">{{ version.normalized.dates|field_value|default:'Not provided' }}</dd>
+  </dl>
+  <details><summary>Source details</summary>
+    <dl><dt>Source ID</dt><dd class="identifier">{{ record.external_id }}</dd><dt>Version</dt><dd class="identifier">{{ version.id }}</dd><dt>Retrieved</dt><dd>{{ version.fetched_at|date:'d M Y, H:i' }}</dd></dl>
+    <details><summary>Original payload</summary><pre>{{ version.raw|json_text }}</pre></details>
+  </details>
+</article>

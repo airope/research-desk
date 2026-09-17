@@ -1,0 +1,2339 @@
+{
+  "schema_version": 1,
+  "dataset_sha256": "1684c6633747ab94150d72486d50a6c065d0e07ffbd870c28ae91b1ba04720f0",
+  "git_revision": "uncommitted",
+  "python": "3.12.14",
+  "config": {
+    "version": "lexical-v1",
+    "automatic_association": false,
+    "title_compatible": 0.85,
+    "title_conflict": 0.5
+  },
+  "candidate_k": 20,
+  "automatic_association_enabled": false,
+  "annotation_status": "No human or expert annotations; synthetic stress and DOI weak labels only.",
+  "limits": [
+    "No independent human annotations; no global accuracy claim.",
+    "DOI-derived labels favor identifier methods and related providers share upstream data.",
+    "Synthetic variants test constructed behavior, not real-world error prevalence.",
+    "Wilson intervals treat pairs as independent; family correlation can make these optimistic.",
+    "Exact DOI candidates are untruncated in addition to lexical top K.",
+    "No thresholds selected on test; initial fixed configuration is exploratory."
+  ],
+  "splits": {
+    "development": {
+      "records": 180,
+      "families": 54,
+      "pairs": 126,
+      "labels": {
+        "same": 72,
+        "different": 36,
+        "ambiguous": 18
+      },
+      "candidate_ms": 248.10370802879333,
+      "candidate_count": 3600,
+      "strata": {
+        "synthetic": {
+          "pairs": 90,
+          "ambiguous": 18,
+          "candidate_recall_at_k": {
+            "numerator": 36,
+            "denominator": 36,
+            "value": 1.0,
+            "wilson_95": [
+              0.9035781695514236,
+              1
+            ]
+          },
+          "methods": {
+            "identifier": {
+              "experimental_suggestion_precision": {
+                "numerator": 18,
+                "denominator": 18,
+                "value": 1.0,
+                "wilson_95": [
+                  0.8241154494176252,
+                  1
+                ]
+              },
+              "end_to_end_recall": {
+                "numerator": 18,
+                "denominator": 36,
+                "value": 0.5,
+                "wilson_95": [
+                  0.34474067624730526,
+                  0.6552593237526947
+                ]
+              },
+              "without_doi_recall": {
+                "numerator": 0,
+                "denominator": 18,
+                "value": 0.0,
+                "wilson_95": [
+                  0,
+                  0.1758845505823749
+                ]
+              },
+              "suggestion_coverage": {
+                "numerator": 18,
+                "denominator": 90,
+                "value": 0.2,
+                "wilson_95": [
+                  0.130422969625965,
+                  0.29413927142704344
+                ]
+              },
+              "ambiguous_suggested": 0,
+              "false_matches": 0,
+              "actual_automatic_associations": 0,
+              "actual_automatic_precision": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "review_cases": 90,
+              "latency_ms": 0.683249905705452
+            },
+            "lexical": {
+              "experimental_suggestion_precision": {
+                "numerator": 18,
+                "denominator": 18,
+                "value": 1.0,
+                "wilson_95": [
+                  0.8241154494176252,
+                  1
+                ]
+              },
+              "end_to_end_recall": {
+                "numerator": 18,
+                "denominator": 36,
+                "value": 0.5,
+                "wilson_95": [
+                  0.34474067624730526,
+                  0.6552593237526947
+                ]
+              },
+              "without_doi_recall": {
+                "numerator": 0,
+                "denominator": 18,
+                "value": 0.0,
+                "wilson_95": [
+                  0,
+                  0.1758845505823749
+                ]
+              },
+              "suggestion_coverage": {
+                "numerator": 18,
+                "denominator": 90,
+                "value": 0.2,
+                "wilson_95": [
+                  0.130422969625965,
+                  0.29413927142704344
+                ]
+              },
+              "ambiguous_suggested": 0,
+              "false_matches": 0,
+              "actual_automatic_associations": 0,
+              "actual_automatic_precision": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "review_cases": 90,
+              "latency_ms": 0.4782923497259617
+            }
+          }
+        },
+        "weak_identifier": {
+          "pairs": 36,
+          "ambiguous": 0,
+          "candidate_recall_at_k": {
+            "numerator": 36,
+            "denominator": 36,
+            "value": 1.0,
+            "wilson_95": [
+              0.9035781695514236,
+              1
+            ]
+          },
+          "methods": {
+            "identifier": {
+              "experimental_suggestion_precision": {
+                "numerator": 36,
+                "denominator": 36,
+                "value": 1.0,
+                "wilson_95": [
+                  0.9035781695514236,
+                  1
+                ]
+              },
+              "end_to_end_recall": {
+                "numerator": 36,
+                "denominator": 36,
+                "value": 1.0,
+                "wilson_95": [
+                  0.9035781695514236,
+                  1
+                ]
+              },
+              "without_doi_recall": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "suggestion_coverage": {
+                "numerator": 36,
+                "denominator": 36,
+                "value": 1.0,
+                "wilson_95": [
+                  0.9035781695514236,
+                  1
+                ]
+              },
+              "ambiguous_suggested": 0,
+              "false_matches": 0,
+              "actual_automatic_associations": 0,
+              "actual_automatic_precision": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "review_cases": 36,
+              "latency_ms": 0.4555000923573971
+            },
+            "lexical": {
+              "experimental_suggestion_precision": {
+                "numerator": 29,
+                "denominator": 29,
+                "value": 1.0,
+                "wilson_95": [
+                  0.8830264055344442,
+                  1
+                ]
+              },
+              "end_to_end_recall": {
+                "numerator": 29,
+                "denominator": 36,
+                "value": 0.8055555555555556,
+                "wilson_95": [
+                  0.6497163793648479,
+                  0.9024702798054665
+                ]
+              },
+              "without_doi_recall": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "suggestion_coverage": {
+                "numerator": 29,
+                "denominator": 36,
+                "value": 0.8055555555555556,
+                "wilson_95": [
+                  0.6497163793648479,
+                  0.9024702798054665
+                ]
+              },
+              "ambiguous_suggested": 0,
+              "false_matches": 0,
+              "actual_automatic_associations": 0,
+              "actual_automatic_precision": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "review_cases": 36,
+              "latency_ms": 0.5120830610394478
+            }
+          }
+        }
+      }
+    },
+    "validation": {
+      "records": 66,
+      "families": 15,
+      "pairs": 51,
+      "labels": {
+        "same": 24,
+        "different": 18,
+        "ambiguous": 9
+      },
+      "candidate_ms": 67.63516692444682,
+      "candidate_count": 1320,
+      "strata": {
+        "synthetic": {
+          "pairs": 45,
+          "ambiguous": 9,
+          "candidate_recall_at_k": {
+            "numerator": 18,
+            "denominator": 18,
+            "value": 1.0,
+            "wilson_95": [
+              0.8241154494176252,
+              1
+            ]
+          },
+          "methods": {
+            "identifier": {
+              "experimental_suggestion_precision": {
+                "numerator": 9,
+                "denominator": 9,
+                "value": 1.0,
+                "wilson_95": [
+                  0.7008472464490407,
+                  1
+                ]
+              },
+              "end_to_end_recall": {
+                "numerator": 9,
+                "denominator": 18,
+                "value": 0.5,
+                "wilson_95": [
+                  0.2903070395897999,
+                  0.7096929604102
+                ]
+              },
+              "without_doi_recall": {
+                "numerator": 0,
+                "denominator": 9,
+                "value": 0.0,
+                "wilson_95": [
+                  0,
+                  0.2991527535509594
+                ]
+              },
+              "suggestion_coverage": {
+                "numerator": 9,
+                "denominator": 45,
+                "value": 0.2,
+                "wilson_95": [
+                  0.10896004402509006,
+                  0.3382325131392944
+                ]
+              },
+              "ambiguous_suggested": 0,
+              "false_matches": 0,
+              "actual_automatic_associations": 0,
+              "actual_automatic_precision": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "review_cases": 45,
+              "latency_ms": 0.22833328694105148
+            },
+            "lexical": {
+              "experimental_suggestion_precision": {
+                "numerator": 9,
+                "denominator": 9,
+                "value": 1.0,
+                "wilson_95": [
+                  0.7008472464490407,
+                  1
+                ]
+              },
+              "end_to_end_recall": {
+                "numerator": 9,
+                "denominator": 18,
+                "value": 0.5,
+                "wilson_95": [
+                  0.2903070395897999,
+                  0.7096929604102
+                ]
+              },
+              "without_doi_recall": {
+                "numerator": 0,
+                "denominator": 9,
+                "value": 0.0,
+                "wilson_95": [
+                  0,
+                  0.2991527535509594
+                ]
+              },
+              "suggestion_coverage": {
+                "numerator": 9,
+                "denominator": 45,
+                "value": 0.2,
+                "wilson_95": [
+                  0.10896004402509006,
+                  0.3382325131392944
+                ]
+              },
+              "ambiguous_suggested": 0,
+              "false_matches": 0,
+              "actual_automatic_associations": 0,
+              "actual_automatic_precision": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "review_cases": 45,
+              "latency_ms": 0.20850030705332756
+            }
+          }
+        },
+        "weak_identifier": {
+          "pairs": 6,
+          "ambiguous": 0,
+          "candidate_recall_at_k": {
+            "numerator": 6,
+            "denominator": 6,
+            "value": 1.0,
+            "wilson_95": [
+              0.6096569663469354,
+              0.9999999999999999
+            ]
+          },
+          "methods": {
+            "identifier": {
+              "experimental_suggestion_precision": {
+                "numerator": 6,
+                "denominator": 6,
+                "value": 1.0,
+                "wilson_95": [
+                  0.6096569663469354,
+                  0.9999999999999999
+                ]
+              },
+              "end_to_end_recall": {
+                "numerator": 6,
+                "denominator": 6,
+                "value": 1.0,
+                "wilson_95": [
+                  0.6096569663469354,
+                  0.9999999999999999
+                ]
+              },
+              "without_doi_recall": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "suggestion_coverage": {
+                "numerator": 6,
+                "denominator": 6,
+                "value": 1.0,
+                "wilson_95": [
+                  0.6096569663469354,
+                  0.9999999999999999
+                ]
+              },
+              "ambiguous_suggested": 0,
+              "false_matches": 0,
+              "actual_automatic_associations": 0,
+              "actual_automatic_precision": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "review_cases": 6,
+              "latency_ms": 0.2610408701002598
+            },
+            "lexical": {
+              "experimental_suggestion_precision": {
+                "numerator": 4,
+                "denominator": 4,
+                "value": 1.0,
+                "wilson_95": [
+                  0.5100999795960008,
+                  1
+                ]
+              },
+              "end_to_end_recall": {
+                "numerator": 4,
+                "denominator": 6,
+                "value": 0.6666666666666666,
+                "wilson_95": [
+                  0.29998832134152864,
+                  0.9032306674407831
+                ]
+              },
+              "without_doi_recall": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "suggestion_coverage": {
+                "numerator": 4,
+                "denominator": 6,
+                "value": 0.6666666666666666,
+                "wilson_95": [
+                  0.29998832134152864,
+                  0.9032306674407831
+                ]
+              },
+              "ambiguous_suggested": 0,
+              "false_matches": 0,
+              "actual_automatic_associations": 0,
+              "actual_automatic_precision": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "review_cases": 6,
+              "latency_ms": 0.2525416202843189
+            }
+          }
+        }
+      }
+    },
+    "test": {
+      "records": 34,
+      "families": 11,
+      "pairs": 23,
+      "labels": {
+        "same": 14,
+        "different": 6,
+        "ambiguous": 3
+      },
+      "candidate_ms": 22.15929189696908,
+      "candidate_count": 680,
+      "strata": {
+        "synthetic": {
+          "pairs": 15,
+          "ambiguous": 3,
+          "candidate_recall_at_k": {
+            "numerator": 6,
+            "denominator": 6,
+            "value": 1.0,
+            "wilson_95": [
+              0.6096569663469354,
+              0.9999999999999999
+            ]
+          },
+          "methods": {
+            "identifier": {
+              "experimental_suggestion_precision": {
+                "numerator": 3,
+                "denominator": 3,
+                "value": 1.0,
+                "wilson_95": [
+                  0.43849391955098227,
+                  1
+                ]
+              },
+              "end_to_end_recall": {
+                "numerator": 3,
+                "denominator": 6,
+                "value": 0.5,
+                "wilson_95": [
+                  0.18761280689940868,
+                  0.8123871931005913
+                ]
+              },
+              "without_doi_recall": {
+                "numerator": 0,
+                "denominator": 3,
+                "value": 0.0,
+                "wilson_95": [
+                  0,
+                  0.5615060804490177
+                ]
+              },
+              "suggestion_coverage": {
+                "numerator": 3,
+                "denominator": 15,
+                "value": 0.2,
+                "wilson_95": [
+                  0.07047420643610414,
+                  0.4518593533465045
+                ]
+              },
+              "ambiguous_suggested": 0,
+              "false_matches": 0,
+              "actual_automatic_associations": 0,
+              "actual_automatic_precision": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "review_cases": 15,
+              "latency_ms": 0.0904998742043972
+            },
+            "lexical": {
+              "experimental_suggestion_precision": {
+                "numerator": 3,
+                "denominator": 3,
+                "value": 1.0,
+                "wilson_95": [
+                  0.43849391955098227,
+                  1
+                ]
+              },
+              "end_to_end_recall": {
+                "numerator": 3,
+                "denominator": 6,
+                "value": 0.5,
+                "wilson_95": [
+                  0.18761280689940868,
+                  0.8123871931005913
+                ]
+              },
+              "without_doi_recall": {
+                "numerator": 0,
+                "denominator": 3,
+                "value": 0.0,
+                "wilson_95": [
+                  0,
+                  0.5615060804490177
+                ]
+              },
+              "suggestion_coverage": {
+                "numerator": 3,
+                "denominator": 15,
+                "value": 0.2,
+                "wilson_95": [
+                  0.07047420643610414,
+                  0.4518593533465045
+                ]
+              },
+              "ambiguous_suggested": 0,
+              "false_matches": 0,
+              "actual_automatic_associations": 0,
+              "actual_automatic_precision": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "review_cases": 15,
+              "latency_ms": 0.06966572254896164
+            }
+          }
+        },
+        "weak_identifier": {
+          "pairs": 8,
+          "ambiguous": 0,
+          "candidate_recall_at_k": {
+            "numerator": 8,
+            "denominator": 8,
+            "value": 1.0,
+            "wilson_95": [
+              0.6755843804891231,
+              1
+            ]
+          },
+          "methods": {
+            "identifier": {
+              "experimental_suggestion_precision": {
+                "numerator": 8,
+                "denominator": 8,
+                "value": 1.0,
+                "wilson_95": [
+                  0.6755843804891231,
+                  1
+                ]
+              },
+              "end_to_end_recall": {
+                "numerator": 8,
+                "denominator": 8,
+                "value": 1.0,
+                "wilson_95": [
+                  0.6755843804891231,
+                  1
+                ]
+              },
+              "without_doi_recall": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "suggestion_coverage": {
+                "numerator": 8,
+                "denominator": 8,
+                "value": 1.0,
+                "wilson_95": [
+                  0.6755843804891231,
+                  1
+                ]
+              },
+              "ambiguous_suggested": 0,
+              "false_matches": 0,
+              "actual_automatic_associations": 0,
+              "actual_automatic_precision": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "review_cases": 8,
+              "latency_ms": 0.07945811375975609
+            },
+            "lexical": {
+              "experimental_suggestion_precision": {
+                "numerator": 8,
+                "denominator": 8,
+                "value": 1.0,
+                "wilson_95": [
+                  0.6755843804891231,
+                  1
+                ]
+              },
+              "end_to_end_recall": {
+                "numerator": 8,
+                "denominator": 8,
+                "value": 1.0,
+                "wilson_95": [
+                  0.6755843804891231,
+                  1
+                ]
+              },
+              "without_doi_recall": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "suggestion_coverage": {
+                "numerator": 8,
+                "denominator": 8,
+                "value": 1.0,
+                "wilson_95": [
+                  0.6755843804891231,
+                  1
+                ]
+              },
+              "ambiguous_suggested": 0,
+              "false_matches": 0,
+              "actual_automatic_associations": 0,
+              "actual_automatic_precision": {
+                "numerator": 0,
+                "denominator": 0,
+                "value": null,
+                "wilson_95": null
+              },
+              "review_cases": 8,
+              "latency_ms": 0.052541960030794144
+            }
+          }
+        }
+      }
+    }
+  },
+  "errors": [
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-01:base",
+      "right": "synthetic-family-01:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-03:base",
+      "right": "synthetic-family-03:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-04:base",
+      "right": "synthetic-family-04:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-05:base",
+      "right": "synthetic-family-05:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-07:base",
+      "right": "synthetic-family-07:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-08:base",
+      "right": "synthetic-family-08:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-09:base",
+      "right": "synthetic-family-09:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-10:base",
+      "right": "synthetic-family-10:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-13:base",
+      "right": "synthetic-family-13:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-14:base",
+      "right": "synthetic-family-14:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-16:base",
+      "right": "synthetic-family-16:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-17:base",
+      "right": "synthetic-family-17:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-19:base",
+      "right": "synthetic-family-19:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-20:base",
+      "right": "synthetic-family-20:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-21:base",
+      "right": "synthetic-family-21:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-25:base",
+      "right": "synthetic-family-25:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-28:base",
+      "right": "synthetic-family-28:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "identifier",
+      "left": "synthetic-family-29:base",
+      "right": "synthetic-family-29:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-01:base",
+      "right": "synthetic-family-01:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-03:base",
+      "right": "synthetic-family-03:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-04:base",
+      "right": "synthetic-family-04:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-05:base",
+      "right": "synthetic-family-05:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-07:base",
+      "right": "synthetic-family-07:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-08:base",
+      "right": "synthetic-family-08:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-09:base",
+      "right": "synthetic-family-09:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-10:base",
+      "right": "synthetic-family-10:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-13:base",
+      "right": "synthetic-family-13:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-14:base",
+      "right": "synthetic-family-14:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-16:base",
+      "right": "synthetic-family-16:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-17:base",
+      "right": "synthetic-family-17:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-19:base",
+      "right": "synthetic-family-19:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-20:base",
+      "right": "synthetic-family-20:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-21:base",
+      "right": "synthetic-family-21:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-25:base",
+      "right": "synthetic-family-25:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-28:base",
+      "right": "synthetic-family-28:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-29:base",
+      "right": "synthetic-family-29:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "real:crossref:2",
+      "right": "real:openalex:74",
+      "label": "same",
+      "label_source": "weak_identifier",
+      "reason": "Equal normalized DOI; not independent human verification.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "identical",
+          "title_similarity": 0.5616045845272206,
+          "author_similarity": 0.8869565217391304,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [
+          "numbers_differ"
+        ],
+        "ranking_score": 1,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "real:crossref:11",
+      "right": "real:openalex:96",
+      "label": "same",
+      "label_source": "weak_identifier",
+      "reason": "Equal normalized DOI; not independent human verification.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "identical",
+          "title_similarity": 0.45744680851063835,
+          "author_similarity": 0.5365853658536586,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [
+          "doi_title_conflict",
+          "numbers_differ"
+        ],
+        "ranking_score": 1,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "real:crossref:15",
+      "right": "real:openalex:61",
+      "label": "same",
+      "label_source": "weak_identifier",
+      "reason": "Equal normalized DOI; not independent human verification.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "identical",
+          "title_similarity": 0.23611111111111113,
+          "author_similarity": 0.8153846153846154,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [
+          "doi_title_conflict",
+          "numbers_differ"
+        ],
+        "ranking_score": 1,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "real:crossref:16",
+      "right": "real:openalex:98",
+      "label": "same",
+      "label_source": "weak_identifier",
+      "reason": "Equal normalized DOI; not independent human verification.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "identical",
+          "title_similarity": 0.9731800766283524,
+          "author_similarity": 0.8292682926829268,
+          "type": "different",
+          "year": "identical"
+        },
+        "warnings": [
+          "different_type"
+        ],
+        "ranking_score": 1,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "real:crossref:28",
+      "right": "real:openalex:95",
+      "label": "same",
+      "label_source": "weak_identifier",
+      "reason": "Equal normalized DOI; not independent human verification.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "identical",
+          "title_similarity": 0.5047169811320755,
+          "author_similarity": 0.9791666666666665,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [
+          "numbers_differ"
+        ],
+        "ranking_score": 1,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "real:crossref:30",
+      "right": "real:openalex:68",
+      "label": "same",
+      "label_source": "weak_identifier",
+      "reason": "Equal normalized DOI; not independent human verification.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "identical",
+          "title_similarity": 0.3178082191780822,
+          "author_similarity": 0.9565217391304348,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [
+          "doi_title_conflict",
+          "numbers_differ"
+        ],
+        "ranking_score": 1,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "real:crossref:44",
+      "right": "real:openalex:77",
+      "label": "same",
+      "label_source": "weak_identifier",
+      "reason": "Equal normalized DOI; not independent human verification.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "identical",
+          "title_similarity": 0.5302013422818792,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [
+          "numbers_differ"
+        ],
+        "ranking_score": 1,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "identifier",
+      "left": "synthetic-family-00:base",
+      "right": "synthetic-family-00:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "identifier",
+      "left": "synthetic-family-02:base",
+      "right": "synthetic-family-02:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "identifier",
+      "left": "synthetic-family-06:base",
+      "right": "synthetic-family-06:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "identifier",
+      "left": "synthetic-family-12:base",
+      "right": "synthetic-family-12:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "identifier",
+      "left": "synthetic-family-15:base",
+      "right": "synthetic-family-15:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "identifier",
+      "left": "synthetic-family-18:base",
+      "right": "synthetic-family-18:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "identifier",
+      "left": "synthetic-family-23:base",
+      "right": "synthetic-family-23:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "identifier",
+      "left": "synthetic-family-26:base",
+      "right": "synthetic-family-26:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "identifier",
+      "left": "synthetic-family-27:base",
+      "right": "synthetic-family-27:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-00:base",
+      "right": "synthetic-family-00:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-02:base",
+      "right": "synthetic-family-02:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-06:base",
+      "right": "synthetic-family-06:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-12:base",
+      "right": "synthetic-family-12:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-15:base",
+      "right": "synthetic-family-15:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-18:base",
+      "right": "synthetic-family-18:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-23:base",
+      "right": "synthetic-family-23:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-26:base",
+      "right": "synthetic-family-26:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-27:base",
+      "right": "synthetic-family-27:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "real:crossref:12",
+      "right": "real:openalex:91",
+      "label": "same",
+      "label_source": "weak_identifier",
+      "reason": "Equal normalized DOI; not independent human verification.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "identical",
+          "title_similarity": 0.29822161422708615,
+          "author_similarity": 0.9224137931034483,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [
+          "doi_title_conflict",
+          "numbers_differ"
+        ],
+        "ranking_score": 1,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "real:crossref:17",
+      "right": "real:openalex:90",
+      "label": "same",
+      "label_source": "weak_identifier",
+      "reason": "Equal normalized DOI; not independent human verification.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "identical",
+          "title_similarity": 0.2629969418960245,
+          "author_similarity": 0.9047619047619048,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [
+          "doi_title_conflict",
+          "numbers_differ"
+        ],
+        "ranking_score": 1,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "test",
+      "method": "identifier",
+      "left": "synthetic-family-11:base",
+      "right": "synthetic-family-11:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "test",
+      "method": "identifier",
+      "left": "synthetic-family-22:base",
+      "right": "synthetic-family-22:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "test",
+      "method": "identifier",
+      "left": "synthetic-family-24:base",
+      "right": "synthetic-family-24:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "test",
+      "method": "lexical",
+      "left": "synthetic-family-11:base",
+      "right": "synthetic-family-11:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "test",
+      "method": "lexical",
+      "left": "synthetic-family-22:base",
+      "right": "synthetic-family-22:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    },
+    {
+      "split": "test",
+      "method": "lexical",
+      "left": "synthetic-family-24:base",
+      "right": "synthetic-family-24:missing",
+      "label": "same",
+      "label_source": "synthetic",
+      "reason": "Constructed DOI omission; identity known only from generation.",
+      "retrieved": true,
+      "suggested_same": false,
+      "evidence": {
+        "signals": {
+          "doi": "missing",
+          "title_similarity": 1.0,
+          "author_similarity": 1.0,
+          "type": "identical",
+          "year": "identical"
+        },
+        "warnings": [],
+        "ranking_score": 1.0,
+        "recommendation": "review"
+      }
+    }
+  ]
+}

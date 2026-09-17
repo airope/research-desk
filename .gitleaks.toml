@@ -1,0 +1,18 @@
+title = "Research Desk secret scanning"
+[extend]
+useDefault = true
+
+# Reviewed SHA-256 provenance values, not credentials. Both path and value must match.
+[[allowlists]]
+description = "Frozen embedding tokenizer checksums"
+condition = "AND"
+paths = ['''(^|/)data/embedding-report\.json$''']
+regexTarget = "secret"
+regexes = ['''^(be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037|acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b)$''']
+
+[[allowlists]]
+description = "Historical source-file checksums"
+condition = "AND"
+paths = ['''(^|/)docs/source-manifest\.json$''']
+regexTarget = "secret"
+regexes = ['''^(e32416de2e19c3034b72b714fbbc595b8e0ca8d4f11fddbfcb496f7f2174d38c|a304fa7b43bffa4ce4319a44473ace2d5dae2a4499f2bd98b04390a8aac1619b)$''']

@@ -1,0 +1,21 @@
+{
+  "method": "Django in-process Client, full middleware/serialization/DB; excludes HTTP socket/server",
+  "records": 1000,
+  "candidate_pairs": 14075,
+  "new_candidates": 0,
+  "candidate_generation_seconds": 30.751518583856523,
+  "readers": 10,
+  "requests_per_reader": 10,
+  "warmup_requests": 1,
+  "duration_seconds": 0.4401595420204103,
+  "p50_ms": 39.03295798227191,
+  "p95_ms": 65.25862496346235,
+  "max_ms": 73.2681667432189,
+  "python": "3.12.14",
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "limits": [
+    "1000 real provider records; not the PRD 10000-record workload.",
+    "Local in-process clients, not end-to-end HTTP load.",
+    "No production capacity or availability inference."
+  ]
+}

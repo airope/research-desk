@@ -1,0 +1,84 @@
+[
+  {
+    "provider": "crossref",
+    "external_id": "synthetic-0",
+    "raw": {
+      "title": [
+        "Synthetic evidence that A inhibits B"
+      ],
+      "type": "journal-article",
+      "author": [
+        {
+          "family": "Example",
+          "given": "Synthetic"
+        }
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2020
+          ]
+        ]
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "provider": "openalex",
+    "external_id": "synthetic-1",
+    "raw": {
+      "title": "Synthetic evidence that A does not inhibit B",
+      "type": "article",
+      "authorships": [
+        {
+          "author": {
+            "display_name": "Synthetic Example"
+          }
+        }
+      ],
+      "publication_year": 2020
+    },
+    "synthetic": true
+  },
+  {
+    "provider": "crossref",
+    "external_id": "synthetic-2",
+    "raw": {
+      "title": [
+        "Synthetic missing identifier example"
+      ],
+      "type": "journal-article",
+      "author": [
+        {
+          "family": "Example",
+          "given": "Synthetic"
+        }
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2020
+          ]
+        ]
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "provider": "openalex",
+    "external_id": "synthetic-3",
+    "raw": {
+      "title": "Synthetic missing identifier example",
+      "type": "article",
+      "authorships": [
+        {
+          "author": {
+            "display_name": "Synthetic Example"
+          }
+        }
+      ],
+      "publication_year": 2020
+    },
+    "synthetic": true
+  }
+]

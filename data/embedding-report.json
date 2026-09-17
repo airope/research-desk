@@ -1,0 +1,2648 @@
+{
+  "schema_version": 1,
+  "status": "measured",
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "model_revision": "b8903db39f65d93ae28d49a37c4f3fa90c5f94e0",
+  "model_license": "Apache-2.0",
+  "model_file_sha256": {
+    "onnx/model.onnx": "6fd5d72fe4589f189f8ebc006442dbb529bb7ce38f8082112682524616046452",
+    "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+    "tokenizer_config.json": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b",
+    "config.json": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41",
+    "1_Pooling/config.json": "4be450dde3b0273bb9787637cfbd28fe04a7ba6ab9d36ac48e92b11e350ffc23",
+    "README.md": "e83f93242da96fbc1274a9bbdb7c7dd8e1de1c4e7a8945f086e36f7bcaff6c41"
+  },
+  "dataset_sha256": "1684c6633747ab94150d72486d50a6c065d0e07ffbd870c28ae91b1ba04720f0",
+  "git_revision": "uncommitted",
+  "automatic_integration": false,
+  "input_fields": [
+    "title"
+  ],
+  "k": 20,
+  "probe_threshold": 0.85,
+  "threshold_policy": "Fixed exploratory threshold 0.85 before execution; not selected on test or other splits.",
+  "annotation_status": "No human or expert annotations; synthetic stress and DOI weak labels only.",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "packages": {
+      "onnxruntime": "1.30.0",
+      "numpy": "2.5.3",
+      "tokenizers": "0.23.2",
+      "huggingface-hub": "1.32.0"
+    }
+  },
+  "encoding_ms": 1266.54216600582,
+  "splits": {
+    "development": {
+      "records": 180,
+      "families": 54,
+      "retrieval_ms": {
+        "lexical": 281.0350409708917,
+        "embedding": 8.04129196330905
+      },
+      "strata": {
+        "synthetic": {
+          "lexical": {
+            "candidate_recall_at_k": {
+              "numerator": 36,
+              "denominator": 36,
+              "value": 1.0,
+              "wilson_95": [
+                0.9035781695514236,
+                1
+              ]
+            },
+            "without_doi_candidate_recall_at_k": {
+              "numerator": 18,
+              "denominator": 18,
+              "value": 1.0,
+              "wilson_95": [
+                0.8241154494176252,
+                1
+              ]
+            },
+            "title_probe_precision": {
+              "numerator": 36,
+              "denominator": 54,
+              "value": 0.6666666666666666,
+              "wilson_95": [
+                0.5336071462745029,
+                0.7775875647984964
+              ]
+            },
+            "title_probe_recall": {
+              "numerator": 36,
+              "denominator": 36,
+              "value": 1.0,
+              "wilson_95": [
+                0.9035781695514236,
+                1
+              ]
+            },
+            "false_title_suggestions": 18,
+            "ambiguous_title_suggestions": 18,
+            "guarded_probe_precision": {
+              "numerator": 36,
+              "denominator": 36,
+              "value": 1.0,
+              "wilson_95": [
+                0.9035781695514236,
+                1
+              ]
+            },
+            "guarded_probe_recall": {
+              "numerator": 36,
+              "denominator": 36,
+              "value": 1.0,
+              "wilson_95": [
+                0.9035781695514236,
+                1
+              ]
+            },
+            "score_summary": {
+              "same": {
+                "count": 36,
+                "mean": 1.0,
+                "min": 1.0,
+                "max": 1.0
+              },
+              "different": {
+                "count": 36,
+                "mean": 0.8919013772316791,
+                "min": 0.7560975609756098,
+                "max": 1.0
+              },
+              "ambiguous": {
+                "count": 18,
+                "mean": 1.0,
+                "min": 1.0,
+                "max": 1.0
+              }
+            }
+          },
+          "embedding": {
+            "candidate_recall_at_k": {
+              "numerator": 36,
+              "denominator": 36,
+              "value": 1.0,
+              "wilson_95": [
+                0.9035781695514236,
+                1
+              ]
+            },
+            "without_doi_candidate_recall_at_k": {
+              "numerator": 18,
+              "denominator": 18,
+              "value": 1.0,
+              "wilson_95": [
+                0.8241154494176252,
+                1
+              ]
+            },
+            "title_probe_precision": {
+              "numerator": 36,
+              "denominator": 72,
+              "value": 0.5,
+              "wilson_95": [
+                0.38746896004724257,
+                0.6125310399527575
+              ]
+            },
+            "title_probe_recall": {
+              "numerator": 36,
+              "denominator": 36,
+              "value": 1.0,
+              "wilson_95": [
+                0.9035781695514236,
+                1
+              ]
+            },
+            "false_title_suggestions": 36,
+            "ambiguous_title_suggestions": 18,
+            "guarded_probe_precision": {
+              "numerator": 36,
+              "denominator": 36,
+              "value": 1.0,
+              "wilson_95": [
+                0.9035781695514236,
+                1
+              ]
+            },
+            "guarded_probe_recall": {
+              "numerator": 36,
+              "denominator": 36,
+              "value": 1.0,
+              "wilson_95": [
+                0.9035781695514236,
+                1
+              ]
+            },
+            "score_summary": {
+              "same": {
+                "count": 36,
+                "mean": 0.9999999999999998,
+                "min": 0.9999999999999988,
+                "max": 1.0000000000000007
+              },
+              "different": {
+                "count": 36,
+                "mean": 0.9643677685435426,
+                "min": 0.8863121125854405,
+                "max": 1.0000000000000007
+              },
+              "ambiguous": {
+                "count": 18,
+                "mean": 0.9999999999999998,
+                "min": 0.9999999999999988,
+                "max": 1.0000000000000007
+              }
+            }
+          }
+        },
+        "weak_identifier": {
+          "lexical": {
+            "candidate_recall_at_k": {
+              "numerator": 36,
+              "denominator": 36,
+              "value": 1.0,
+              "wilson_95": [
+                0.9035781695514236,
+                1
+              ]
+            },
+            "without_doi_candidate_recall_at_k": {
+              "numerator": 0,
+              "denominator": 0,
+              "value": null,
+              "wilson_95": null
+            },
+            "title_probe_precision": {
+              "numerator": 30,
+              "denominator": 30,
+              "value": 1.0,
+              "wilson_95": [
+                0.8864829086095221,
+                1
+              ]
+            },
+            "title_probe_recall": {
+              "numerator": 30,
+              "denominator": 36,
+              "value": 0.8333333333333334,
+              "wilson_95": [
+                0.6810888526532568,
+                0.9212965937143589
+              ]
+            },
+            "false_title_suggestions": 0,
+            "ambiguous_title_suggestions": 0,
+            "guarded_probe_precision": {
+              "numerator": 29,
+              "denominator": 29,
+              "value": 1.0,
+              "wilson_95": [
+                0.8830264055344442,
+                1
+              ]
+            },
+            "guarded_probe_recall": {
+              "numerator": 29,
+              "denominator": 36,
+              "value": 0.8055555555555556,
+              "wilson_95": [
+                0.6497163793648479,
+                0.9024702798054665
+              ]
+            },
+            "score_summary": {
+              "same": {
+                "count": 36,
+                "mean": 0.9003885573663426,
+                "min": 0.23611111111111113,
+                "max": 1.0
+              },
+              "different": {
+                "count": 0,
+                "mean": null,
+                "min": null,
+                "max": null
+              },
+              "ambiguous": {
+                "count": 0,
+                "mean": null,
+                "min": null,
+                "max": null
+              }
+            }
+          },
+          "embedding": {
+            "candidate_recall_at_k": {
+              "numerator": 36,
+              "denominator": 36,
+              "value": 1.0,
+              "wilson_95": [
+                0.9035781695514236,
+                1
+              ]
+            },
+            "without_doi_candidate_recall_at_k": {
+              "numerator": 0,
+              "denominator": 0,
+              "value": null,
+              "wilson_95": null
+            },
+            "title_probe_precision": {
+              "numerator": 31,
+              "denominator": 31,
+              "value": 1.0,
+              "wilson_95": [
+                0.889740999265246,
+                0.9999999999999999
+              ]
+            },
+            "title_probe_recall": {
+              "numerator": 31,
+              "denominator": 36,
+              "value": 0.8611111111111112,
+              "wilson_95": [
+                0.7134014871960681,
+                0.9391827463688489
+              ]
+            },
+            "false_title_suggestions": 0,
+            "ambiguous_title_suggestions": 0,
+            "guarded_probe_precision": {
+              "numerator": 29,
+              "denominator": 29,
+              "value": 1.0,
+              "wilson_95": [
+                0.8830264055344442,
+                1
+              ]
+            },
+            "guarded_probe_recall": {
+              "numerator": 29,
+              "denominator": 36,
+              "value": 0.8055555555555556,
+              "wilson_95": [
+                0.6497163793648479,
+                0.9024702798054665
+              ]
+            },
+            "score_summary": {
+              "same": {
+                "count": 36,
+                "mean": 0.9569517072621889,
+                "min": 0.6983198372064338,
+                "max": 1.000000000000001
+              },
+              "different": {
+                "count": 0,
+                "mean": null,
+                "min": null,
+                "max": null
+              },
+              "ambiguous": {
+                "count": 0,
+                "mean": null,
+                "min": null,
+                "max": null
+              }
+            }
+          }
+        }
+      }
+    },
+    "validation": {
+      "records": 66,
+      "families": 15,
+      "retrieval_ms": {
+        "lexical": 61.78087508305907,
+        "embedding": 0.9734169580042362
+      },
+      "strata": {
+        "synthetic": {
+          "lexical": {
+            "candidate_recall_at_k": {
+              "numerator": 18,
+              "denominator": 18,
+              "value": 1.0,
+              "wilson_95": [
+                0.8241154494176252,
+                1
+              ]
+            },
+            "without_doi_candidate_recall_at_k": {
+              "numerator": 9,
+              "denominator": 9,
+              "value": 1.0,
+              "wilson_95": [
+                0.7008472464490407,
+                1
+              ]
+            },
+            "title_probe_precision": {
+              "numerator": 18,
+              "denominator": 27,
+              "value": 0.6666666666666666,
+              "wilson_95": [
+                0.47824419872105484,
+                0.8135694555640665
+              ]
+            },
+            "title_probe_recall": {
+              "numerator": 18,
+              "denominator": 18,
+              "value": 1.0,
+              "wilson_95": [
+                0.8241154494176252,
+                1
+              ]
+            },
+            "false_title_suggestions": 9,
+            "ambiguous_title_suggestions": 9,
+            "guarded_probe_precision": {
+              "numerator": 18,
+              "denominator": 18,
+              "value": 1.0,
+              "wilson_95": [
+                0.8241154494176252,
+                1
+              ]
+            },
+            "guarded_probe_recall": {
+              "numerator": 18,
+              "denominator": 18,
+              "value": 1.0,
+              "wilson_95": [
+                0.8241154494176252,
+                1
+              ]
+            },
+            "score_summary": {
+              "same": {
+                "count": 18,
+                "mean": 1.0,
+                "min": 1.0,
+                "max": 1.0
+              },
+              "different": {
+                "count": 18,
+                "mean": 0.892982838018299,
+                "min": 0.75,
+                "max": 1.0
+              },
+              "ambiguous": {
+                "count": 9,
+                "mean": 1.0,
+                "min": 1.0,
+                "max": 1.0
+              }
+            }
+          },
+          "embedding": {
+            "candidate_recall_at_k": {
+              "numerator": 18,
+              "denominator": 18,
+              "value": 1.0,
+              "wilson_95": [
+                0.8241154494176252,
+                1
+              ]
+            },
+            "without_doi_candidate_recall_at_k": {
+              "numerator": 9,
+              "denominator": 9,
+              "value": 1.0,
+              "wilson_95": [
+                0.7008472464490407,
+                1
+              ]
+            },
+            "title_probe_precision": {
+              "numerator": 18,
+              "denominator": 35,
+              "value": 0.5142857142857142,
+              "wilson_95": [
+                0.35568539626711626,
+                0.6700601960874726
+              ]
+            },
+            "title_probe_recall": {
+              "numerator": 18,
+              "denominator": 18,
+              "value": 1.0,
+              "wilson_95": [
+                0.8241154494176252,
+                1
+              ]
+            },
+            "false_title_suggestions": 17,
+            "ambiguous_title_suggestions": 9,
+            "guarded_probe_precision": {
+              "numerator": 18,
+              "denominator": 18,
+              "value": 1.0,
+              "wilson_95": [
+                0.8241154494176252,
+                1
+              ]
+            },
+            "guarded_probe_recall": {
+              "numerator": 18,
+              "denominator": 18,
+              "value": 1.0,
+              "wilson_95": [
+                0.8241154494176252,
+                1
+              ]
+            },
+            "score_summary": {
+              "same": {
+                "count": 18,
+                "mean": 1.0,
+                "min": 0.9999999999999992,
+                "max": 1.0000000000000009
+              },
+              "different": {
+                "count": 18,
+                "mean": 0.9631907035666616,
+                "min": 0.8390161739043666,
+                "max": 1.0000000000000009
+              },
+              "ambiguous": {
+                "count": 9,
+                "mean": 1.0,
+                "min": 0.9999999999999992,
+                "max": 1.0000000000000009
+              }
+            }
+          }
+        },
+        "weak_identifier": {
+          "lexical": {
+            "candidate_recall_at_k": {
+              "numerator": 6,
+              "denominator": 6,
+              "value": 1.0,
+              "wilson_95": [
+                0.6096569663469354,
+                0.9999999999999999
+              ]
+            },
+            "without_doi_candidate_recall_at_k": {
+              "numerator": 0,
+              "denominator": 0,
+              "value": null,
+              "wilson_95": null
+            },
+            "title_probe_precision": {
+              "numerator": 4,
+              "denominator": 4,
+              "value": 1.0,
+              "wilson_95": [
+                0.5100999795960008,
+                1
+              ]
+            },
+            "title_probe_recall": {
+              "numerator": 4,
+              "denominator": 6,
+              "value": 0.6666666666666666,
+              "wilson_95": [
+                0.29998832134152864,
+                0.9032306674407831
+              ]
+            },
+            "false_title_suggestions": 0,
+            "ambiguous_title_suggestions": 0,
+            "guarded_probe_precision": {
+              "numerator": 4,
+              "denominator": 4,
+              "value": 1.0,
+              "wilson_95": [
+                0.5100999795960008,
+                1
+              ]
+            },
+            "guarded_probe_recall": {
+              "numerator": 4,
+              "denominator": 6,
+              "value": 0.6666666666666666,
+              "wilson_95": [
+                0.29998832134152864,
+                0.9032306674407831
+              ]
+            },
+            "score_summary": {
+              "same": {
+                "count": 6,
+                "mean": 0.7602030926871851,
+                "min": 0.2629969418960245,
+                "max": 1.0
+              },
+              "different": {
+                "count": 0,
+                "mean": null,
+                "min": null,
+                "max": null
+              },
+              "ambiguous": {
+                "count": 0,
+                "mean": null,
+                "min": null,
+                "max": null
+              }
+            }
+          },
+          "embedding": {
+            "candidate_recall_at_k": {
+              "numerator": 6,
+              "denominator": 6,
+              "value": 1.0,
+              "wilson_95": [
+                0.6096569663469354,
+                0.9999999999999999
+              ]
+            },
+            "without_doi_candidate_recall_at_k": {
+              "numerator": 0,
+              "denominator": 0,
+              "value": null,
+              "wilson_95": null
+            },
+            "title_probe_precision": {
+              "numerator": 4,
+              "denominator": 4,
+              "value": 1.0,
+              "wilson_95": [
+                0.5100999795960008,
+                1
+              ]
+            },
+            "title_probe_recall": {
+              "numerator": 4,
+              "denominator": 6,
+              "value": 0.6666666666666666,
+              "wilson_95": [
+                0.29998832134152864,
+                0.9032306674407831
+              ]
+            },
+            "false_title_suggestions": 0,
+            "ambiguous_title_suggestions": 0,
+            "guarded_probe_precision": {
+              "numerator": 4,
+              "denominator": 4,
+              "value": 1.0,
+              "wilson_95": [
+                0.5100999795960008,
+                1
+              ]
+            },
+            "guarded_probe_recall": {
+              "numerator": 4,
+              "denominator": 6,
+              "value": 0.6666666666666666,
+              "wilson_95": [
+                0.29998832134152864,
+                0.9032306674407831
+              ]
+            },
+            "score_summary": {
+              "same": {
+                "count": 6,
+                "mean": 0.8675956391248141,
+                "min": 0.4395861937396599,
+                "max": 1.0000000000000002
+              },
+              "different": {
+                "count": 0,
+                "mean": null,
+                "min": null,
+                "max": null
+              },
+              "ambiguous": {
+                "count": 0,
+                "mean": null,
+                "min": null,
+                "max": null
+              }
+            }
+          }
+        }
+      }
+    },
+    "test": {
+      "records": 34,
+      "families": 11,
+      "retrieval_ms": {
+        "lexical": 22.52074982970953,
+        "embedding": 0.2928338944911957
+      },
+      "strata": {
+        "synthetic": {
+          "lexical": {
+            "candidate_recall_at_k": {
+              "numerator": 6,
+              "denominator": 6,
+              "value": 1.0,
+              "wilson_95": [
+                0.6096569663469354,
+                0.9999999999999999
+              ]
+            },
+            "without_doi_candidate_recall_at_k": {
+              "numerator": 3,
+              "denominator": 3,
+              "value": 1.0,
+              "wilson_95": [
+                0.43849391955098227,
+                1
+              ]
+            },
+            "title_probe_precision": {
+              "numerator": 6,
+              "denominator": 9,
+              "value": 0.6666666666666666,
+              "wilson_95": [
+                0.35419734749908977,
+                0.879418401317257
+              ]
+            },
+            "title_probe_recall": {
+              "numerator": 6,
+              "denominator": 6,
+              "value": 1.0,
+              "wilson_95": [
+                0.6096569663469354,
+                0.9999999999999999
+              ]
+            },
+            "false_title_suggestions": 3,
+            "ambiguous_title_suggestions": 3,
+            "guarded_probe_precision": {
+              "numerator": 6,
+              "denominator": 6,
+              "value": 1.0,
+              "wilson_95": [
+                0.6096569663469354,
+                0.9999999999999999
+              ]
+            },
+            "guarded_probe_recall": {
+              "numerator": 6,
+              "denominator": 6,
+              "value": 1.0,
+              "wilson_95": [
+                0.6096569663469354,
+                0.9999999999999999
+              ]
+            },
+            "score_summary": {
+              "same": {
+                "count": 6,
+                "mean": 1.0,
+                "min": 1.0,
+                "max": 1.0
+              },
+              "different": {
+                "count": 6,
+                "mean": 0.8844337685801101,
+                "min": 0.7560975609756098,
+                "max": 1.0
+              },
+              "ambiguous": {
+                "count": 3,
+                "mean": 1.0,
+                "min": 1.0,
+                "max": 1.0
+              }
+            }
+          },
+          "embedding": {
+            "candidate_recall_at_k": {
+              "numerator": 6,
+              "denominator": 6,
+              "value": 1.0,
+              "wilson_95": [
+                0.6096569663469354,
+                0.9999999999999999
+              ]
+            },
+            "without_doi_candidate_recall_at_k": {
+              "numerator": 3,
+              "denominator": 3,
+              "value": 1.0,
+              "wilson_95": [
+                0.43849391955098227,
+                1
+              ]
+            },
+            "title_probe_precision": {
+              "numerator": 6,
+              "denominator": 12,
+              "value": 0.5,
+              "wilson_95": [
+                0.2537781703934222,
+                0.7462218296065778
+              ]
+            },
+            "title_probe_recall": {
+              "numerator": 6,
+              "denominator": 6,
+              "value": 1.0,
+              "wilson_95": [
+                0.6096569663469354,
+                0.9999999999999999
+              ]
+            },
+            "false_title_suggestions": 6,
+            "ambiguous_title_suggestions": 3,
+            "guarded_probe_precision": {
+              "numerator": 6,
+              "denominator": 6,
+              "value": 1.0,
+              "wilson_95": [
+                0.6096569663469354,
+                0.9999999999999999
+              ]
+            },
+            "guarded_probe_recall": {
+              "numerator": 6,
+              "denominator": 6,
+              "value": 1.0,
+              "wilson_95": [
+                0.6096569663469354,
+                0.9999999999999999
+              ]
+            },
+            "score_summary": {
+              "same": {
+                "count": 6,
+                "mean": 1.0000000000000002,
+                "min": 1.0,
+                "max": 1.0000000000000002
+              },
+              "different": {
+                "count": 6,
+                "mean": 0.9646918915942363,
+                "min": 0.9111555388269682,
+                "max": 1.0000000000000002
+              },
+              "ambiguous": {
+                "count": 3,
+                "mean": 1.0000000000000002,
+                "min": 1.0,
+                "max": 1.0000000000000002
+              }
+            }
+          }
+        },
+        "weak_identifier": {
+          "lexical": {
+            "candidate_recall_at_k": {
+              "numerator": 8,
+              "denominator": 8,
+              "value": 1.0,
+              "wilson_95": [
+                0.6755843804891231,
+                1
+              ]
+            },
+            "without_doi_candidate_recall_at_k": {
+              "numerator": 0,
+              "denominator": 0,
+              "value": null,
+              "wilson_95": null
+            },
+            "title_probe_precision": {
+              "numerator": 8,
+              "denominator": 8,
+              "value": 1.0,
+              "wilson_95": [
+                0.6755843804891231,
+                1
+              ]
+            },
+            "title_probe_recall": {
+              "numerator": 8,
+              "denominator": 8,
+              "value": 1.0,
+              "wilson_95": [
+                0.6755843804891231,
+                1
+              ]
+            },
+            "false_title_suggestions": 0,
+            "ambiguous_title_suggestions": 0,
+            "guarded_probe_precision": {
+              "numerator": 8,
+              "denominator": 8,
+              "value": 1.0,
+              "wilson_95": [
+                0.6755843804891231,
+                1
+              ]
+            },
+            "guarded_probe_recall": {
+              "numerator": 8,
+              "denominator": 8,
+              "value": 1.0,
+              "wilson_95": [
+                0.6755843804891231,
+                1
+              ]
+            },
+            "score_summary": {
+              "same": {
+                "count": 8,
+                "mean": 1.0,
+                "min": 1.0,
+                "max": 1.0
+              },
+              "different": {
+                "count": 0,
+                "mean": null,
+                "min": null,
+                "max": null
+              },
+              "ambiguous": {
+                "count": 0,
+                "mean": null,
+                "min": null,
+                "max": null
+              }
+            }
+          },
+          "embedding": {
+            "candidate_recall_at_k": {
+              "numerator": 8,
+              "denominator": 8,
+              "value": 1.0,
+              "wilson_95": [
+                0.6755843804891231,
+                1
+              ]
+            },
+            "without_doi_candidate_recall_at_k": {
+              "numerator": 0,
+              "denominator": 0,
+              "value": null,
+              "wilson_95": null
+            },
+            "title_probe_precision": {
+              "numerator": 8,
+              "denominator": 8,
+              "value": 1.0,
+              "wilson_95": [
+                0.6755843804891231,
+                1
+              ]
+            },
+            "title_probe_recall": {
+              "numerator": 8,
+              "denominator": 8,
+              "value": 1.0,
+              "wilson_95": [
+                0.6755843804891231,
+                1
+              ]
+            },
+            "false_title_suggestions": 0,
+            "ambiguous_title_suggestions": 0,
+            "guarded_probe_precision": {
+              "numerator": 8,
+              "denominator": 8,
+              "value": 1.0,
+              "wilson_95": [
+                0.6755843804891231,
+                1
+              ]
+            },
+            "guarded_probe_recall": {
+              "numerator": 8,
+              "denominator": 8,
+              "value": 1.0,
+              "wilson_95": [
+                0.6755843804891231,
+                1
+              ]
+            },
+            "score_summary": {
+              "same": {
+                "count": 8,
+                "mean": 0.9999999999999998,
+                "min": 0.9999999999999991,
+                "max": 1.0
+              },
+              "different": {
+                "count": 0,
+                "mean": null,
+                "min": null,
+                "max": null
+              },
+              "ambiguous": {
+                "count": 0,
+                "mean": null,
+                "min": null,
+                "max": null
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "errors": [
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-01:base",
+      "right": "synthetic-family-01:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-01:base",
+      "right": "synthetic-family-01:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-03:base",
+      "right": "synthetic-family-03:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-03:base",
+      "right": "synthetic-family-03:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-04:base",
+      "right": "synthetic-family-04:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-04:base",
+      "right": "synthetic-family-04:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-05:base",
+      "right": "synthetic-family-05:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-05:base",
+      "right": "synthetic-family-05:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-07:base",
+      "right": "synthetic-family-07:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-07:base",
+      "right": "synthetic-family-07:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-08:base",
+      "right": "synthetic-family-08:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-08:base",
+      "right": "synthetic-family-08:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-09:base",
+      "right": "synthetic-family-09:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-09:base",
+      "right": "synthetic-family-09:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-10:base",
+      "right": "synthetic-family-10:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-10:base",
+      "right": "synthetic-family-10:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-13:base",
+      "right": "synthetic-family-13:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-13:base",
+      "right": "synthetic-family-13:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-14:base",
+      "right": "synthetic-family-14:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-14:base",
+      "right": "synthetic-family-14:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-16:base",
+      "right": "synthetic-family-16:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-16:base",
+      "right": "synthetic-family-16:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-17:base",
+      "right": "synthetic-family-17:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-17:base",
+      "right": "synthetic-family-17:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-19:base",
+      "right": "synthetic-family-19:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-19:base",
+      "right": "synthetic-family-19:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-20:base",
+      "right": "synthetic-family-20:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-20:base",
+      "right": "synthetic-family-20:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-21:base",
+      "right": "synthetic-family-21:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-21:base",
+      "right": "synthetic-family-21:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-25:base",
+      "right": "synthetic-family-25:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-25:base",
+      "right": "synthetic-family-25:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-28:base",
+      "right": "synthetic-family-28:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-28:base",
+      "right": "synthetic-family-28:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-29:base",
+      "right": "synthetic-family-29:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "lexical",
+      "left": "synthetic-family-29:base",
+      "right": "synthetic-family-29:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-01:base",
+      "right": "synthetic-family-01:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9356298292984189,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-01:base",
+      "right": "synthetic-family-01:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 0.9999999999999994,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-01:base",
+      "right": "synthetic-family-01:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 0.9999999999999994,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-03:base",
+      "right": "synthetic-family-03:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9716102799979244,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-03:base",
+      "right": "synthetic-family-03:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0000000000000007,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-03:base",
+      "right": "synthetic-family-03:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0000000000000007,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-04:base",
+      "right": "synthetic-family-04:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9514366979285639,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-04:base",
+      "right": "synthetic-family-04:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 0.9999999999999999,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-04:base",
+      "right": "synthetic-family-04:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 0.9999999999999999,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-05:base",
+      "right": "synthetic-family-05:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9144592047065475,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-05:base",
+      "right": "synthetic-family-05:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 0.9999999999999996,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-05:base",
+      "right": "synthetic-family-05:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 0.9999999999999996,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-07:base",
+      "right": "synthetic-family-07:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9075581712733743,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-07:base",
+      "right": "synthetic-family-07:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0000000000000007,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-07:base",
+      "right": "synthetic-family-07:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0000000000000007,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-08:base",
+      "right": "synthetic-family-08:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9407993664739372,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-08:base",
+      "right": "synthetic-family-08:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0000000000000002,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-08:base",
+      "right": "synthetic-family-08:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0000000000000002,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-09:base",
+      "right": "synthetic-family-09:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9239025937612019,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-09:base",
+      "right": "synthetic-family-09:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 0.9999999999999988,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-09:base",
+      "right": "synthetic-family-09:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 0.9999999999999988,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-10:base",
+      "right": "synthetic-family-10:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9342235920784172,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-10:base",
+      "right": "synthetic-family-10:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 0.9999999999999997,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-10:base",
+      "right": "synthetic-family-10:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 0.9999999999999997,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-13:base",
+      "right": "synthetic-family-13:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9024476936132829,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-13:base",
+      "right": "synthetic-family-13:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0000000000000002,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-13:base",
+      "right": "synthetic-family-13:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0000000000000002,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-14:base",
+      "right": "synthetic-family-14:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9269688326189975,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-14:base",
+      "right": "synthetic-family-14:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-14:base",
+      "right": "synthetic-family-14:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-16:base",
+      "right": "synthetic-family-16:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.935805469716789,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-16:base",
+      "right": "synthetic-family-16:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 0.9999999999999999,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-16:base",
+      "right": "synthetic-family-16:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 0.9999999999999999,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-17:base",
+      "right": "synthetic-family-17:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.8863121125854405,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-17:base",
+      "right": "synthetic-family-17:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 0.9999999999999999,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-17:base",
+      "right": "synthetic-family-17:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 0.9999999999999999,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-19:base",
+      "right": "synthetic-family-19:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9336953456613389,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-19:base",
+      "right": "synthetic-family-19:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 0.999999999999999,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-19:base",
+      "right": "synthetic-family-19:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 0.999999999999999,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-20:base",
+      "right": "synthetic-family-20:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9449935219991503,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-20:base",
+      "right": "synthetic-family-20:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0000000000000007,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-20:base",
+      "right": "synthetic-family-20:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0000000000000007,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-21:base",
+      "right": "synthetic-family-21:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9384879679682895,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-21:base",
+      "right": "synthetic-family-21:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-21:base",
+      "right": "synthetic-family-21:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-25:base",
+      "right": "synthetic-family-25:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9451942202685408,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-25:base",
+      "right": "synthetic-family-25:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 0.9999999999999997,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-25:base",
+      "right": "synthetic-family-25:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 0.9999999999999997,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-28:base",
+      "right": "synthetic-family-28:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9008962745925914,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-28:base",
+      "right": "synthetic-family-28:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-28:base",
+      "right": "synthetic-family-28:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-29:base",
+      "right": "synthetic-family-29:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9228184930247307,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-29:base",
+      "right": "synthetic-family-29:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 0.9999999999999999,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "development",
+      "method": "embedding",
+      "left": "synthetic-family-29:base",
+      "right": "synthetic-family-29:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 0.9999999999999999,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-00:base",
+      "right": "synthetic-family-00:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-00:base",
+      "right": "synthetic-family-00:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-02:base",
+      "right": "synthetic-family-02:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-02:base",
+      "right": "synthetic-family-02:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-06:base",
+      "right": "synthetic-family-06:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-06:base",
+      "right": "synthetic-family-06:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-12:base",
+      "right": "synthetic-family-12:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-12:base",
+      "right": "synthetic-family-12:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-15:base",
+      "right": "synthetic-family-15:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-15:base",
+      "right": "synthetic-family-15:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-18:base",
+      "right": "synthetic-family-18:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-18:base",
+      "right": "synthetic-family-18:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-23:base",
+      "right": "synthetic-family-23:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-23:base",
+      "right": "synthetic-family-23:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-26:base",
+      "right": "synthetic-family-26:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-26:base",
+      "right": "synthetic-family-26:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-27:base",
+      "right": "synthetic-family-27:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "lexical",
+      "left": "synthetic-family-27:base",
+      "right": "synthetic-family-27:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-00:base",
+      "right": "synthetic-family-00:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9482370529085464,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-00:base",
+      "right": "synthetic-family-00:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0000000000000007,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-00:base",
+      "right": "synthetic-family-00:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0000000000000007,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-02:base",
+      "right": "synthetic-family-02:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9158713229577272,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-02:base",
+      "right": "synthetic-family-02:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 0.9999999999999998,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-02:base",
+      "right": "synthetic-family-02:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 0.9999999999999998,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-06:base",
+      "right": "synthetic-family-06:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9478624802258979,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-06:base",
+      "right": "synthetic-family-06:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0000000000000002,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-06:base",
+      "right": "synthetic-family-06:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0000000000000002,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-12:base",
+      "right": "synthetic-family-12:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9303255762530768,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-12:base",
+      "right": "synthetic-family-12:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0000000000000009,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-12:base",
+      "right": "synthetic-family-12:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0000000000000009,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-15:base",
+      "right": "synthetic-family-15:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0000000000000002,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-15:base",
+      "right": "synthetic-family-15:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0000000000000002,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-18:base",
+      "right": "synthetic-family-18:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9618671738838337,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-18:base",
+      "right": "synthetic-family-18:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 0.9999999999999992,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-18:base",
+      "right": "synthetic-family-18:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 0.9999999999999992,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-23:base",
+      "right": "synthetic-family-23:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9592584582187923,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-23:base",
+      "right": "synthetic-family-23:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 0.9999999999999998,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-23:base",
+      "right": "synthetic-family-23:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 0.9999999999999998,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-26:base",
+      "right": "synthetic-family-26:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9366795758431254,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-26:base",
+      "right": "synthetic-family-26:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 0.9999999999999996,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-26:base",
+      "right": "synthetic-family-26:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 0.9999999999999996,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-27:base",
+      "right": "synthetic-family-27:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.8983148500045411,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-27:base",
+      "right": "synthetic-family-27:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0000000000000002,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "validation",
+      "method": "embedding",
+      "left": "synthetic-family-27:base",
+      "right": "synthetic-family-27:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0000000000000002,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "test",
+      "method": "lexical",
+      "left": "synthetic-family-11:base",
+      "right": "synthetic-family-11:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "test",
+      "method": "lexical",
+      "left": "synthetic-family-11:base",
+      "right": "synthetic-family-11:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "test",
+      "method": "lexical",
+      "left": "synthetic-family-22:base",
+      "right": "synthetic-family-22:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "test",
+      "method": "lexical",
+      "left": "synthetic-family-22:base",
+      "right": "synthetic-family-22:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "test",
+      "method": "lexical",
+      "left": "synthetic-family-24:base",
+      "right": "synthetic-family-24:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "test",
+      "method": "lexical",
+      "left": "synthetic-family-24:base",
+      "right": "synthetic-family-24:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "test",
+      "method": "embedding",
+      "left": "synthetic-family-11:base",
+      "right": "synthetic-family-11:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.944410969913458,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "test",
+      "method": "embedding",
+      "left": "synthetic-family-11:base",
+      "right": "synthetic-family-11:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0000000000000002,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "test",
+      "method": "embedding",
+      "left": "synthetic-family-11:base",
+      "right": "synthetic-family-11:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0000000000000002,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "test",
+      "method": "embedding",
+      "left": "synthetic-family-22:base",
+      "right": "synthetic-family-22:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9111555388269682,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "test",
+      "method": "embedding",
+      "left": "synthetic-family-22:base",
+      "right": "synthetic-family-22:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "test",
+      "method": "embedding",
+      "left": "synthetic-family-22:base",
+      "right": "synthetic-family-22:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0,
+      "guarded_suggestion": true
+    },
+    {
+      "split": "test",
+      "method": "embedding",
+      "left": "synthetic-family-24:base",
+      "right": "synthetic-family-24:negative",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Invented distinct publication with negation and distinct identifier.",
+      "score": 0.9325848408249908,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "test",
+      "method": "embedding",
+      "left": "synthetic-family-24:base",
+      "right": "synthetic-family-24:preprint",
+      "label": "different",
+      "label_source": "synthetic",
+      "reason": "Different invented edition; preprint is not the journal edition.",
+      "score": 1.0000000000000002,
+      "guarded_suggestion": false
+    },
+    {
+      "split": "test",
+      "method": "embedding",
+      "left": "synthetic-family-24:base",
+      "right": "synthetic-family-24:ambiguous",
+      "label": "ambiguous",
+      "label_source": "synthetic",
+      "reason": "Title alone cannot establish identity.",
+      "score": 1.0000000000000002,
+      "guarded_suggestion": true
+    }
+  ],
+  "limitations": [
+    "Synthetic and DOI weak labels only; no independently verified identity labels.",
+    "DOI label circularity and shared upstream providers limit conclusions.",
+    "Title-only similarity cannot distinguish identical-title editions, preprints or missing context.",
+    "Cosine top K uses a dense matrix only for this small frozen experiment; not a production index.",
+    "Title-only probes are uncalibrated suggestions, never probabilities or automatic merges.",
+    "Wilson intervals assume independent pairs; family clustering can make them optimistic.",
+    "Encoding excludes download/model load; retrieval timings exclude encoding."
+  ]
+}

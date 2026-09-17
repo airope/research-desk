@@ -1,0 +1,35 @@
+{% extends 'records/base.html' %}
+{% load presentation %}
+{% block title %}Evaluation{% endblock %}
+{% block content %}
+<div class="page-header"><h1>Evaluation</h1><span class="badge">Exploratory</span></div>
+{% if report %}
+<div class="page-meta"><span><strong>{{ report.splits.test.records }}</strong> test records</span><span><strong>{{ report.splits.test.families }}</strong> families</span><span><strong>{{ report.splits.test.pairs }}</strong> pairs</span><span><strong>{{ report.splits.test.labels.ambiguous }}</strong> ambiguous</span></div>
+<div class="notice warning">Synthetic and DOI-derived labels only. Automatic association is disabled.</div>
+<section class="panel">
+  <div class="panel-header"><h2>Candidate retrieval</h2><span class="muted">Test split · K = {{ report.candidate_k }} + exact DOI</span></div>
+  <div class="table-wrap"><table class="metric-table">
+    <thead><tr><th>Labels</th><th>Pairs</th><th>Recall</th><th>95% Wilson interval</th></tr></thead>
+    <tbody>{% for name,stratum in report.splits.test.strata.items %}<tr>
+      <td>{{ name|readable }}</td><td>{{ stratum.pairs }}<small>{{ stratum.ambiguous }} ambiguous</small></td>
+      <td>{{ stratum.candidate_recall_at_k.numerator }} / {{ stratum.candidate_recall_at_k.denominator }}</td>
+      <td>{% if stratum.candidate_recall_at_k.denominator %}{{ stratum.candidate_recall_at_k.wilson_95.0|floatformat:3 }}–{{ stratum.candidate_recall_at_k.wilson_95.1|floatformat:3 }}{% else %}—{% endif %}</td>
+    </tr>{% endfor %}</tbody>
+  </table></div>
+</section>
+<section class="panel">
+  <div class="panel-header"><h2>Suggested matches</h2><span class="muted">Test split · No automatic writes</span></div>
+  <div class="table-wrap"><table class="metric-table">
+    <thead><tr><th>Labels / method</th><th>Precision</th><th>Recall</th><th>Recall without DOI</th><th>False matches</th></tr></thead>
+    <tbody>{% for origin,stratum in report.splits.test.strata.items %}{% for method,metrics in stratum.methods.items %}<tr>
+      <td>{{ origin|readable }}<small>{{ method|readable }}</small></td>
+      <td>{{ metrics.experimental_suggestion_precision.numerator }} / {{ metrics.experimental_suggestion_precision.denominator }}<small>{% if metrics.experimental_suggestion_precision.denominator %}95% CI {{ metrics.experimental_suggestion_precision.wilson_95.0|floatformat:3 }}–{{ metrics.experimental_suggestion_precision.wilson_95.1|floatformat:3 }}{% else %}Not measured{% endif %}</small></td>
+      <td>{{ metrics.end_to_end_recall.numerator }} / {{ metrics.end_to_end_recall.denominator }}</td>
+      <td>{% if metrics.without_doi_recall.denominator %}{{ metrics.without_doi_recall.numerator }} / {{ metrics.without_doi_recall.denominator }}{% else %}—{% endif %}</td>
+      <td>{{ metrics.false_matches }}</td>
+    </tr>{% endfor %}{% endfor %}</tbody>
+  </table></div>
+</section>
+<section class="panel"><details><summary>Method and limitations</summary><p>{{ report.annotation_status }}</p><ul>{% for limitation in report.limits %}<li>{{ limitation }}</li>{% endfor %}</ul><p>Reproduce: <code>python manage.py benchmark</code></p></details><details><summary>Full report</summary><pre>{{ report_json }}</pre></details></section>
+{% else %}<section class="panel empty"><p>No benchmark report.</p><code>python manage.py benchmark</code></section>{% endif %}
+{% endblock %}

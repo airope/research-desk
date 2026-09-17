@@ -1,0 +1,20 @@
+{% extends 'records/base.html' %}
+{% load presentation %}
+{% block title %}Withdraw decision{% endblock %}
+{% block content %}
+<div class="breadcrumbs"><a href="{% url 'queue' %}">Review queue</a><span>/</span><a href="{% url 'compare' decision.pair_id %}">Comparison</a></div>
+<div class="page-header"><h1>Withdraw decision</h1><span class="badge">{{ decision.action|readable }}</span></div>
+<div class="page-meta"><span>{{ decision.actor }}</span><time>{{ decision.created_at|date:'d M Y, H:i' }}</time></div>
+<section class="panel">
+  {% if decision.reason %}<p>{{ decision.reason }}</p>{% endif %}
+  <div class="notice {% if preview.will_split %}warning{% endif %}">{% if preview.will_split %}The publication will split into {{ preview.groups|length }} groups.{% elif decision.action == 'accept' %}The publication will remain connected.{% else %}Publication membership will remain unchanged.{% endif %} Source records and decision history are retained.</div>
+  <h2>Resulting groups</h2>
+  <div class="resulting-groups">{% for group in preview_groups %}<div class="group"><h3>Group {{ forloop.counter }}</h3>{% for record in group %}<p><strong>{{ record.current_version.normalized.title|plain_title }}</strong><small>{{ record.provider|readable }} · {{ record.external_id }}</small></p>{% endfor %}</div>{% endfor %}</div>
+  {% if preview.remaining_links %}<details><summary>{{ preview.remaining_links|length }} remaining link{{ preview.remaining_links|length|pluralize }}</summary><ul>{% for link in preview.remaining_links %}<li><a href="{% url 'withdraw' link %}">Inspect link {{ forloop.counter }} →</a></li>{% endfor %}</ul></details>{% endif %}
+</section>
+{% if can_curate and not error %}<section class="panel decision-panel"><form method="post">{% csrf_token %}
+  <input type="hidden" name="expected_revision" value="{{ preview.expected_revision }}"><input type="hidden" name="idempotency_key" value="{{ key }}">
+  <label>Reason for withdrawal<textarea name="reason" required maxlength="2000" rows="2"></textarea></label>
+  <div class="actions"><button>Confirm withdrawal</button><a href="{% url 'compare' decision.pair_id %}">Cancel</a></div>
+</form></section>{% endif %}
+{% endblock %}

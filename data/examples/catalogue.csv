@@ -1,0 +1,4 @@
+local_id,title,authors,year,doi,journal,type
+LAB-001,Simulated detector calibration study,A. Example; B. Sample,2023,,Example Physics Journal,article
+LAB-002,Simulated beam alignment measurement,C. Example,2024,,Example Instrumentation Journal,article
+LAB-003,Simulated particle tracking methods,D. Sample; E. Example,2024,,Example Computing Journal,article

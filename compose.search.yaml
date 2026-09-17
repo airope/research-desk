@@ -1,0 +1,23 @@
+# Optional local-only Elasticsearch for passage ranking.
+# docker compose -f compose.yaml -f compose.search.yaml --profile search up -d elasticsearch
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.19.21
+    profiles: [search]
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: 'true'
+      xpack.security.autoconfiguration.enabled: 'false'
+      ELASTIC_PASSWORD: ${RESEARCH_ELASTIC_PASSWORD:?Set a local Elasticsearch password}
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+    ports: ['127.0.0.1:9200:9200']
+    volumes: ['research-search:/usr/share/elasticsearch/data']
+    mem_limit: 2g
+    healthcheck:
+      # A 401 proves that the authenticated HTTP service is responding.
+      test: ['CMD-SHELL', 'test "$$(curl -s -o /dev/null -w "%{http_code}" http://localhost:9200/)" = 401']
+      interval: 10s
+      timeout: 5s
+      retries: 30
+volumes:
+  research-search:

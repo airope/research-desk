@@ -1,0 +1,82 @@
+x-app: &app
+  build: .
+  environment: &env
+    PGHOST: db
+    PGPORT: '5432'
+    PGDATABASE: srr
+    PGUSER: srr
+    PGPASSWORD: ${PGPASSWORD:-srr-local-only}
+    SECRET_KEY: ${SECRET_KEY:-local-demo-only-change-before-deployment}
+    APP_ENV: development
+    DEBUG: '1'
+    ALLOWED_HOSTS: localhost,127.0.0.1
+    EXTERNAL_IMPORTS_ENABLED: '0'
+    RESEARCH_CODEX_ENABLED: '0'
+    LLM_PROVIDER: ${LLM_PROVIDER:-codex}
+    LLM_MODEL: ${LLM_MODEL:-}
+    LLM_API_KEY: ${LLM_API_KEY:-}
+    LLM_BASE_URL: ${LLM_BASE_URL:-}
+    LLM_OUTPUT_MODE: ${LLM_OUTPUT_MODE:-}
+    LLM_MAX_OUTPUT_TOKENS: ${LLM_MAX_OUTPUT_TOKENS:-8192}
+    LLM_TIMEOUT_SECONDS: ${LLM_TIMEOUT_SECONDS:-180}
+    OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+    ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+    GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+    MISTRAL_API_KEY: ${MISTRAL_API_KEY:-}
+    DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+    GROQ_API_KEY: ${GROQ_API_KEY:-}
+    XAI_API_KEY: ${XAI_API_KEY:-}
+    OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+    RESEARCH_SEARCH_BACKEND: ${RESEARCH_SEARCH_BACKEND:-local}
+    RESEARCH_ELASTICSEARCH_URL: ${RESEARCH_ELASTICSEARCH_URL:-http://elasticsearch:9200}
+    RESEARCH_ELASTICSEARCH_API_KEY: ${RESEARCH_ELASTICSEARCH_API_KEY:-}
+    RESEARCH_ELASTICSEARCH_READ_API_KEY: ${RESEARCH_ELASTICSEARCH_READ_API_KEY:-}
+  depends_on:
+    db:
+      condition: service_healthy
+services:
+  db:
+    image: postgres:17.11-bookworm
+    environment:
+      POSTGRES_DB: srr
+      POSTGRES_USER: srr
+      POSTGRES_PASSWORD: ${PGPASSWORD:-srr-local-only}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U srr -d srr']
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  init:
+    <<: *app
+    command: ['python', 'manage.py', 'migrate', '--noinput']
+  web:
+    <<: *app
+    # Local demonstration: Django serves static assets and binds only on host loopback.
+    command: ['python', 'manage.py', 'runserver', '0.0.0.0:8000', '--noreload']
+    ports: ['127.0.0.1:8000:8000']
+    depends_on:
+      init:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+  worker:
+    <<: *app
+    command: ['python', 'manage.py', 'worker']
+    depends_on:
+      init:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+  research_worker:
+    <<: *app
+    command: ['python', 'manage.py', 'research_worker']
+    restart: unless-stopped
+    depends_on:
+      init:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+volumes:
+  pgdata:

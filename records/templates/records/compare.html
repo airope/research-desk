@@ -1,0 +1,38 @@
+{% extends 'records/base.html' %}
+{% load presentation %}
+{% block title %}Compare sources{% endblock %}
+{% block content %}
+<div class="breadcrumbs"><a href="{% url 'queue' %}">Review queue</a><span>/</span><span>Compare</span></div>
+<div class="page-header"><h1>Compare sources</h1><div class="header-actions"><span class="state {{ pair.state }}">{{ pair.state|readable }}</span><a href="{% url 'publication' pair.left.publication_id %}">Publication →</a></div></div>
+{% if proposal %}
+<div class="comparison">
+  {% include 'records/source.html' with record=pair.left version=proposal.left_version label='Source A' %}
+  {% include 'records/source.html' with record=pair.right version=proposal.right_version label='Source B' %}
+</div>
+<section class="panel">
+  <div class="panel-header"><h2>Comparison</h2><span class="muted" title="Ranking score, not a probability">{{ proposal.method }} · Score {{ proposal.ranking_score|floatformat:3 }}</span></div>
+  <div class="signals">{% for name,value in proposal.signals.items %}<div><span>{{ name|readable }}</span><strong>{% if value == None %}Not provided{% else %}{{ value }}{% endif %}</strong></div>{% endfor %}</div>
+  {% if proposal.warnings %}<ul class="warning-list">{% for warning in proposal.warnings %}<li>{{ warning|readable }}</li>{% endfor %}</ul>{% endif %}
+  <details><summary>Method and versions</summary><pre>{{ proposal.config|json_text }}</pre><p class="identifier">{{ proposal.left_version_id }}<br>{{ proposal.right_version_id }}</p></details>
+</section>
+{% else %}<div class="notice">No comparison available.</div>{% endif %}
+{% if can_curate and proposal %}
+<section class="panel decision-panel">
+  <h2>Decision</h2>
+  {% if active_decision %}<p><a href="{% url 'withdraw' active_decision.id %}">Withdraw the active decision</a> to change it.</p>{% else %}
+  <form method="post">{% csrf_token %}
+    <input type="hidden" name="expected_revision" value="{{ pair.revision }}"><input type="hidden" name="idempotency_key" value="{{ key }}">
+    <label>Reason <span class="optional">Required for conflicting evidence</span><textarea name="reason" maxlength="2000" rows="2"></textarea></label>
+    <div class="actions"><button name="action" value="accept">Same publication</button><button class="secondary" name="action" value="reject">Different publications</button><button class="secondary" name="action" value="defer">Defer</button><span class="muted">Revision {{ pair.revision }}</span></div>
+  </form>{% endif %}
+</section>
+{% elif proposal %}<p class="access-note"><a href="{% url 'login' %}?next={{ request.path|urlencode }}">Sign in</a> to record a decision.</p>{% endif %}
+<section class="panel history">
+  <div class="panel-header"><h2>History</h2><span class="muted">{{ pair.decisions.count }} event{{ pair.decisions.count|pluralize }}</span></div>
+  {% for decision in pair.decisions.all %}<article>
+    <div class="history-meta"><span class="badge">{{ decision.action|readable }}</span><strong>{{ decision.actor }}</strong><time>{{ decision.created_at|date:'d M Y, H:i' }}</time></div>
+    {% if decision.reason %}<p>{{ decision.reason }}</p>{% endif %}
+    {% if decision.action != 'withdraw' and not decision.withdrawal %}<a href="{% url 'withdraw' decision.id %}">Withdraw decision →</a>{% endif %}
+  </article>{% empty %}<p class="muted">No decisions.</p>{% endfor %}
+</section>
+{% endblock %}

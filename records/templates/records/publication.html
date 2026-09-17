@@ -1,0 +1,37 @@
+{% extends 'records/base.html' %}
+{% load presentation %}
+{% block title %}Publication{% endblock %}
+{% block content %}
+<div class="breadcrumbs"><a href="{% url 'catalogue' %}">Catalogue</a><span>/</span><span>Publication</span></div>
+<div class="page-header"><h1 class="publication-title">{{ publication.projection.title.value|plain_title }}</h1><span class="state {{ publication.state }}">{{ publication.state|readable }}</span></div>
+<div class="page-meta"><span class="identifier">{{ publication.projection.doi.value|default:'No DOI' }}</span><span>{{ publication.records.count }} source{{ publication.records.count|pluralize }}</span><span>Revision {{ publication.revision }}</span></div>
+{% if publication.state != 'active' %}<div class="notice warning">This publication was replaced.{% for successor in publication.successors %} <a href="{% url 'publication' successor %}">View successor {{ forloop.counter }} →</a>{% endfor %}</div>{% endif %}
+<section class="panel">
+  <div class="panel-header"><h2>Fields and provenance</h2></div>
+  <div class="table-wrap"><table class="provenance-table">
+    <thead><tr><th>Field</th><th>Selected value</th><th>Provenance</th></tr></thead>
+    <tbody>{% for field,detail in publication.projection.items %}<tr>
+      <td class="field-label">{{ field|readable }}</td>
+      <td class="field-value preserve-lines">{% if field == 'title' %}{{ detail.value|plain_title }}{% else %}{{ detail.value|field_value }}{% endif %}</td>
+      <td><details class="inline-details"><summary>Source version</summary><code>{{ detail.version_id }}</code><small>{{ detail.path }}</small><small>{{ detail.policy }}</small></details></td>
+    </tr>{% empty %}<tr><td colspan="3" class="empty">No projected values.</td></tr>{% endfor %}</tbody>
+  </table></div>
+</section>
+<section class="panel">
+  <div class="panel-header"><h2>Source records</h2></div>
+  {% for record in publication.records.all %}
+  <details><summary><strong>{{ record.provider|readable }}</strong> <span class="identifier">{{ record.external_id }}</span> <span class="muted">{{ record.versions.count }} version{{ record.versions.count|pluralize }}</span></summary>
+    {% for version in record.versions.all %}<article class="version">
+      <div class="version-meta"><time>{{ version.fetched_at|date:'d M Y, H:i' }}</time><code>{{ version.id }}</code></div>
+      <dl>{% for name,value in version.normalized.items %}{% if value and name != 'title_key' %}<dt>{{ name|readable }}</dt><dd class="preserve-lines">{{ value|field_value }}</dd>{% endif %}{% endfor %}</dl>
+      <details><summary>Original payload</summary><pre>{{ version.raw|json_text }}</pre></details>
+    </article>{% endfor %}
+  </details>
+  {% empty %}<p class="muted">No active sources. See successor publications above.</p>{% endfor %}
+</section>
+<section class="panel history">
+  <div class="panel-header"><h2>History</h2></div>
+  {% for event in history %}<article><div class="history-meta"><span class="badge">{{ event.action|readable }}</span><strong>{{ event.actor }}</strong><time>{{ event.created_at|date:'d M Y, H:i' }}</time></div>{% if event.reason %}<p>{{ event.reason }}</p>{% endif %}<a href="{% url 'compare' event.pair_id %}">Comparison →</a></article>{% empty %}<p class="muted">No review decisions.</p>{% endfor %}
+</section>
+<details class="record-metadata"><summary>Publication ID</summary><code>{{ publication.id }}</code></details>
+{% endblock %}
