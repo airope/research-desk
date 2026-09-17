@@ -15,7 +15,7 @@ uv run pytest -q
 RUN_PDF_SANDBOX_TEST=1 uv run pytest tests/test_research_fulltext.py -q
 ```
 
-The publication copy was installed independently and tested with Python 3.12.13 and an isolated PostgreSQL 17 cluster. The full local run including opt-in PDF/HTTP host tests passed **424 tests**, with **one Elasticsearch integration test skipped** because no disposable search service was configured for that run. Ruff, Django checks, migrations and OpenAPI validation were also exercised. These are bounded developer checks, not a production security certification.
+The publication copy was installed independently and tested with Python 3.12.13 and an isolated PostgreSQL 17 cluster. The full local run including opt-in PDF/HTTP host tests passed **425 tests**, with **one Elasticsearch integration test skipped** because no disposable search service was configured for that run. Ruff, Django checks, migrations and OpenAPI validation were also exercised. These are bounded developer checks, not a production security certification.
 
 The installed Python distributions were checked with pip-audit; no known vulnerabilities were reported in that run. Secret scanning used Gitleaks with four reviewed, path-and-value-specific checksum exclusions. These checks cannot guarantee that all vulnerabilities or private information are absent.
 

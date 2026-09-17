@@ -49,7 +49,7 @@ Aucune faille critique supplémentaire n'a été identifiée par cette revue. Ce
 Voir [le guide de déploiement](deployment.md).
 
 - Docker n'est pas installé sur ce poste. Le build de l'image, le lancement Compose et Bubblewrap sous Linux doivent être vérifiés sur l'hôte cible. La CI comporte désormais le service Elasticsearch d'intégration, mais elle n'a pas été exécutée sur GitHub pendant cette tâche.
-- Le mode ChatGPT/Codex reste personnel et local. Aucun fournisseur IA destiné à un serveur partagé n'a été ajouté.
+- At the historical audit date, ChatGPT/Codex was personal and local; no shared-server model provider had been added. The later optional API adapters are documented in [LLM providers](llm-providers.md).
 - Les quotas bornent le nombre de travaux ; ils ne mesurent pas un coût monétaire ni des tokens non exposés par le fournisseur.
 - La résolution DNS dépend du resolver système. Les limites HTTP interrompent connexion/lecture une fois la socket accessible ; elles ne tuent pas un syscall DNS bloqué. Les clients injectés doivent conserver des connexions neuves pour la garantie sur les en-têtes.
 - Le verrou arXiv coordonne les processus d'un même hôte. Des conteneurs doivent partager son fichier ; un déploiement sur plusieurs machines nécessite une coordination distribuée.

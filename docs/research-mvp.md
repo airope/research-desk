@@ -2,7 +2,7 @@
 
 # Research desk MVP
 
-Purpose: turn a scientific question into a bounded INSPIRE reading dossier, a passage-based comparison and a source-linked draft report. This is an independent portfolio project, not an INSPIRE/CERN product or partnership.
+Purpose: turn a scientific question into a bounded INSPIRE reading dossier, a passage-based comparison and a source-linked draft report. This is an independent project, not an INSPIRE/CERN product or partnership.
 
 ## Local launch
 

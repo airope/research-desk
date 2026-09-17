@@ -58,7 +58,7 @@ Compose starts PostgreSQL, migrations, the web application and both queue worker
 Requirements: Python 3.12 (the project accepts 3.12–3.14), [uv](https://docs.astral.sh/uv/), and PostgreSQL 17. Provision a database and role named `srr` before running these commands. The database role needs permission to create the `pg_trgm` extension; the test role also needs permission to create a test database. SQLite is not a substitute.
 
 ```sh
-uv sync --frozen
+uv sync --frozen --managed-python
 export PGHOST=127.0.0.1 PGPORT=5432 PGDATABASE=srr PGUSER=srr
 # Configure PGPASSWORD for your local database in your environment or project .env.
 uv run python manage.py migrate
